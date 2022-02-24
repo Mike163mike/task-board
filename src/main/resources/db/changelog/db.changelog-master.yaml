@@ -1,0 +1,11 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  init
+       author:  Mike
+       changes:
+         -  sqlFile:
+              path:  /create-task-board.sql
+#         dbms:  '!h2,  oracle,  mysql'
+#         endDelimiter:  \nGO
+#         splitStatements:  true
+#         stripComments:  true

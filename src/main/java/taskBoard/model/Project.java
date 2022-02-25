@@ -1,30 +1,24 @@
 package taskBoard.model;
 
-import io.micrometer.core.lang.NonNull;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-//@Component
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String name;
-
-    @OneToOne
-    private Task task;
-
-    @Transient
-    private Set<Task> tasks = new HashSet<>();
 
     public long getId() {
         return id;
     }
+
+    @OneToMany
+    private Set<Board> boards = new HashSet<>();
 
     public String getName() {
         return name;
@@ -34,19 +28,11 @@ public class Project {
         this.name = name;
     }
 
-    public Task getTask() {
-        return task;
+    public Set<Board> getBoards() {
+        return boards;
     }
 
-    public void setTask(Task taskId) {
-        this.task = taskId;
-    }
-
-    public Set<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
+    public void setBoards(Set<Board> boards) {
+        this.boards = boards;
     }
 }

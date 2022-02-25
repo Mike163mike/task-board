@@ -1,1 +1,448 @@
-2022-02-24 12:52:00.523  WARN 10244 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13h25m2s90ms205µs800ns).
+2022-02-25 06:36:46.569  WARN 10244 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h18m49s420ms105µs800ns).
+2022-02-25 09:56:53.113  WARN 10244 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h34m35s173ms608µs500ns).
+2022-02-25 10:24:12.958  INFO 10244 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-25 10:24:12.967  INFO 10244 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-02-25 10:24:13.013  INFO 10244 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-25 10:24:13.024  INFO 10244 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-25 10:24:25.384  INFO 22236 --- [main] taskBoard.TaskBoardApplication           : Starting TaskBoardApplication using Java 11.0.9 on DESKTOP-SD5UFGQ with PID 22236 (C:\Users\Alexander Kobzarev\IdeaProjects\task-board\target\classes started by Alexander Kobzarev in C:\Users\Alexander Kobzarev\IdeaProjects\task-board)
+2022-02-25 10:24:25.390  INFO 22236 --- [main] taskBoard.TaskBoardApplication           : No active profile set, falling back to default profiles: default
+2022-02-25 10:24:27.728  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:24:27.730  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-25 10:24:27.780  INFO 22236 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.BoardRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:24:27.783  INFO 22236 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:24:27.788  INFO 22236 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.ProjectRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:24:27.791  INFO 22236 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.TaskRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:24:27.794  INFO 22236 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.VersionReleaseRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:24:27.795  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 0 JDBC repository interfaces.
+2022-02-25 10:24:27.809  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:24:27.810  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-25 10:24:27.875  INFO 22236 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 5 JPA repository interfaces.
+2022-02-25 10:24:28.727  INFO 22236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-25 10:24:28.740  INFO 22236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-25 10:24:28.740  INFO 22236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2022-02-25 10:24:28.915  INFO 22236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-25 10:24:28.915  INFO 22236 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3424 ms
+2022-02-25 10:24:29.293  INFO 22236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-25 10:24:29.541  INFO 22236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-25 10:24:29.739  INFO 22236 --- [main] liquibase.database                       : Set default schema name to public
+2022-02-25 10:24:29.850  INFO 22236 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2022-02-25 10:24:30.031  INFO 22236 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2022-02-25 10:24:30.074  INFO 22236 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2022-02-25 10:24:30.077  WARN 22236 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          db/changelog/changeset/create_task_board.sql::raw::includeAll was: 8:df513844a9792b827ef5d4f9b136fe62 but is now: 8:822301cd6599d496a3088b919fa33805
+
+2022-02-25 10:24:30.078  INFO 22236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-25 10:24:30.162  INFO 22236 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-25 10:24:30.166  INFO 22236 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-02-25 10:24:30.187  INFO 22236 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-02-25 10:24:30.219 ERROR 22236 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          db/changelog/changeset/create_task_board.sql::raw::includeAll was: 8:df513844a9792b827ef5d4f9b136fe62 but is now: 8:822301cd6599d496a3088b919fa33805
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) ~[spring-boot-2.5.3.jar:2.5.3]
+	at taskBoard.TaskBoardApplication.main(TaskBoardApplication.java:10) ~[classes/:na]
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          db/changelog/changeset/create_task_board.sql::raw::includeAll was: 8:df513844a9792b827ef5d4f9b136fe62 but is now: 8:822301cd6599d496a3088b919fa33805
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:296) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:231) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:211) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:197) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269) ~[liquibase-core-4.7.1.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 18 common frames omitted
+
+2022-02-25 10:27:31.789  INFO 11852 --- [main] taskBoard.TaskBoardApplication           : Starting TaskBoardApplication using Java 11.0.9 on DESKTOP-SD5UFGQ with PID 11852 (C:\Users\Alexander Kobzarev\IdeaProjects\task-board\target\classes started by Alexander Kobzarev in C:\Users\Alexander Kobzarev\IdeaProjects\task-board)
+2022-02-25 10:27:31.794  INFO 11852 --- [main] taskBoard.TaskBoardApplication           : No active profile set, falling back to default profiles: default
+2022-02-25 10:27:33.552  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:27:33.554  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-25 10:27:33.591  INFO 11852 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.BoardRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:27:33.593  INFO 11852 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:27:33.596  INFO 11852 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.ProjectRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:27:33.598  INFO 11852 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.TaskRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:27:33.600  INFO 11852 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.VersionReleaseRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:27:33.602  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 0 JDBC repository interfaces.
+2022-02-25 10:27:33.612  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:27:33.612  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-25 10:27:33.658  INFO 11852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 5 JPA repository interfaces.
+2022-02-25 10:27:34.248  INFO 11852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-25 10:27:34.257  INFO 11852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-25 10:27:34.258  INFO 11852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2022-02-25 10:27:34.388  INFO 11852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-25 10:27:34.389  INFO 11852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2513 ms
+2022-02-25 10:27:34.682  INFO 11852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-25 10:27:34.911  INFO 11852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-25 10:27:35.072  INFO 11852 --- [main] liquibase.database                       : Set default schema name to public
+2022-02-25 10:27:35.171  INFO 11852 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2022-02-25 10:27:35.328  INFO 11852 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2022-02-25 10:27:35.456  INFO 11852 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2022-02-25 10:27:35.461  WARN 11852 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db/changelog/changeset/create_task_board.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа [Failed SQL: (0) CREATE TABLE IF NOT EXISTS employee
+(
+    id      serial PRIMARY KEY,
+    surname varchar(60),
+    name    varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS release_version
+(
+    id          serial PRIMARY KEY,
+    start_date  date,
+    finish_date date
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id   serial,
+    name varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS board
+(
+    id         serial PRIMARY KEY,
+    project_id int REFERENCES project
+);
+
+CREATE TABLE IF NOT EXISTS task
+(
+    id                 serial PRIMARY KEY,
+    name               varchar(255),
+    status             character varying,
+    author_id          int REFERENCES employee,
+    developer_id       int REFERENCES employee,
+    release_version_id int REFERENCES release_version,
+    board_id           int REFERENCES board
+)]
+2022-02-25 10:27:35.463  INFO 11852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-25 10:27:35.586  INFO 11852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-25 10:27:35.591  INFO 11852 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-02-25 10:27:35.616  INFO 11852 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-02-25 10:27:35.645 ERROR 11852 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db/changelog/changeset/create_task_board.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа [Failed SQL: (0) CREATE TABLE IF NOT EXISTS employee
+(
+    id      serial PRIMARY KEY,
+    surname varchar(60),
+    name    varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS release_version
+(
+    id          serial PRIMARY KEY,
+    start_date  date,
+    finish_date date
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id   serial,
+    name varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS board
+(
+    id         serial PRIMARY KEY,
+    project_id int REFERENCES project
+);
+
+CREATE TABLE IF NOT EXISTS task
+(
+    id                 serial PRIMARY KEY,
+    name               varchar(255),
+    status             character varying,
+    author_id          int REFERENCES employee,
+    developer_id       int REFERENCES employee,
+    release_version_id int REFERENCES release_version,
+    board_id           int REFERENCES board
+)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.9.jar:5.3.9]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-2.5.3.jar:2.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) ~[spring-boot-2.5.3.jar:2.5.3]
+	at taskBoard.TaskBoardApplication.main(TaskBoardApplication.java:10) ~[classes/:na]
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db/changelog/changeset/create_task_board.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа [Failed SQL: (0) CREATE TABLE IF NOT EXISTS employee
+(
+    id      serial PRIMARY KEY,
+    surname varchar(60),
+    name    varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS release_version
+(
+    id          serial PRIMARY KEY,
+    start_date  date,
+    finish_date date
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id   serial,
+    name varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS board
+(
+    id         serial PRIMARY KEY,
+    project_id int REFERENCES project
+);
+
+CREATE TABLE IF NOT EXISTS task
+(
+    id                 serial PRIMARY KEY,
+    name               varchar(255),
+    status             character varying,
+    author_id          int REFERENCES employee,
+    developer_id       int REFERENCES employee,
+    release_version_id int REFERENCES release_version,
+    board_id           int REFERENCES board
+)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:124) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:211) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:197) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269) ~[liquibase-core-4.7.1.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845) ~[spring-beans-5.3.9.jar:5.3.9]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-5.3.9.jar:5.3.9]
+	... 18 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set db/changelog/changeset/create_task_board.sql::raw::includeAll:
+     Reason: liquibase.exception.DatabaseException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа [Failed SQL: (0) CREATE TABLE IF NOT EXISTS employee
+(
+    id      serial PRIMARY KEY,
+    surname varchar(60),
+    name    varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS release_version
+(
+    id          serial PRIMARY KEY,
+    start_date  date,
+    finish_date date
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id   serial,
+    name varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS board
+(
+    id         serial PRIMARY KEY,
+    project_id int REFERENCES project
+);
+
+CREATE TABLE IF NOT EXISTS task
+(
+    id                 serial PRIMARY KEY,
+    name               varchar(255),
+    status             character varying,
+    author_id          int REFERENCES employee,
+    developer_id       int REFERENCES employee,
+    release_version_id int REFERENCES release_version,
+    board_id           int REFERENCES board
+)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:695) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:111) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:110) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:94) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:180) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:179) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:158) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:243) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.Scope.child(Scope.java:247) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:66) ~[liquibase-core-4.7.1.jar:na]
+	... 36 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа [Failed SQL: (0) CREATE TABLE IF NOT EXISTS employee
+(
+    id      serial PRIMARY KEY,
+    surname varchar(60),
+    name    varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS release_version
+(
+    id          serial PRIMARY KEY,
+    start_date  date,
+    finish_date date
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id   serial,
+    name varchar(60)
+);
+
+CREATE TABLE IF NOT EXISTS board
+(
+    id         serial PRIMARY KEY,
+    project_id int REFERENCES project
+);
+
+CREATE TABLE IF NOT EXISTS task
+(
+    id                 serial PRIMARY KEY,
+    name               varchar(255),
+    status             character varying,
+    author_id          int REFERENCES employee,
+    developer_id       int REFERENCES employee,
+    release_version_id int REFERENCES release_version,
+    board_id           int REFERENCES board
+)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:397) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:151) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261) ~[liquibase-core-4.7.1.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:660) ~[liquibase-core-4.7.1.jar:na]
+	... 56 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: в целевой внешней таблице "project" нет первичного ключа
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2674) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2364) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:354) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:484) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:404) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:325) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:311) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:287) ~[postgresql-42.3.1.jar:42.3.1]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:282) ~[postgresql-42.3.1.jar:42.3.1]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393) ~[liquibase-core-4.7.1.jar:na]
+	... 61 common frames omitted
+
+2022-02-25 10:36:56.886  INFO 20824 --- [main] taskBoard.TaskBoardApplication           : Starting TaskBoardApplication using Java 11.0.9 on DESKTOP-SD5UFGQ with PID 20824 (C:\Users\Alexander Kobzarev\IdeaProjects\task-board\target\classes started by Alexander Kobzarev in C:\Users\Alexander Kobzarev\IdeaProjects\task-board)
+2022-02-25 10:36:56.890  INFO 20824 --- [main] taskBoard.TaskBoardApplication           : No active profile set, falling back to default profiles: default
+2022-02-25 10:36:58.431  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:36:58.432  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-02-25 10:36:58.467  INFO 20824 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.BoardRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:36:58.469  INFO 20824 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:36:58.472  INFO 20824 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.ProjectRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:36:58.474  INFO 20824 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.TaskRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:36:58.476  INFO 20824 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface taskBoard.repository.VersionReleaseRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2022-02-25 10:36:58.478  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 JDBC repository interfaces.
+2022-02-25 10:36:58.486  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-02-25 10:36:58.487  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-25 10:36:58.529  INFO 20824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2022-02-25 10:36:59.091  INFO 20824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-25 10:36:59.101  INFO 20824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-25 10:36:59.101  INFO 20824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2022-02-25 10:36:59.232  INFO 20824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-25 10:36:59.233  INFO 20824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2294 ms
+2022-02-25 10:36:59.525  INFO 20824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-25 10:36:59.730  INFO 20824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-25 10:36:59.876  INFO 20824 --- [main] liquibase.database                       : Set default schema name to public
+2022-02-25 10:36:59.969  INFO 20824 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2022-02-25 10:37:00.135  INFO 20824 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2022-02-25 10:37:00.259  INFO 20824 --- [main] liquibase.changelog                      : Custom SQL executed
+2022-02-25 10:37:00.262  INFO 20824 --- [main] liquibase.changelog                      : ChangeSet db/changelog/changeset/create_task_board.sql::raw::includeAll ran successfully in 74ms
+2022-02-25 10:37:00.304  INFO 20824 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2022-02-25 10:37:00.467  INFO 20824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-25 10:37:00.579  INFO 20824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-02-25 10:37:00.826  INFO 20824 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-25 10:37:01.011  INFO 20824 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-25 10:37:01.931  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.931  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ограничение "fkglbcvvdfyhb68effa48t894ib" в таблице "board" не существует, пропускается
+2022-02-25 10:37:01.933  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.933  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "project_boards" не существует, пропускается
+2022-02-25 10:37:01.934  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.934  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "project_boards" не существует, пропускается
+2022-02-25 10:37:01.935  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.936  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ограничение "fk9eayhe3f87o3nxp42l0m51m97" в таблице "task" не существует, пропускается
+2022-02-25 10:37:01.937  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.937  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ограничение "fkrar3pm9ixqub1nilws0l8l22w" в таблице "task" не существует, пропускается
+2022-02-25 10:37:01.938  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.938  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ограничение "fkfarnheb0brfc5h5d8ml4qem5u" в таблице "task" не существует, пропускается
+2022-02-25 10:37:01.939  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.939  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ограничение "fk2g3ri1bx0v625kcmag4089bl0" в таблице "task" не существует, пропускается
+2022-02-25 10:37:01.946  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.946  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : удаление распространяется на объект ограничение task_board_id_fkey в отношении таблица task
+2022-02-25 10:37:01.952  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.953  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : удаление распространяется на ещё 2 объекта
+2022-02-25 10:37:01.958  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.958  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "project_boards" не существует, пропускается
+2022-02-25 10:37:01.966  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2022-02-25 10:37:01.966  WARN 20824 --- [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : последовательность "hibernate_sequence" не существует, пропускается
+2022-02-25 10:37:02.026  INFO 20824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-25 10:37:02.036  INFO 20824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-25 10:37:02.576  WARN 20824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-25 10:37:02.787  INFO 20824 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-25 10:37:03.306  INFO 20824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-25 10:37:03.586  INFO 20824 --- [main] taskBoard.TaskBoardApplication           : Started TaskBoardApplication in 7.196 seconds (JVM running for 8.287)
+2022-02-25 10:37:04.393  INFO 20824 --- [RMI TCP Connection(2)-172.17.144.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-25 10:37:04.394  INFO 20824 --- [RMI TCP Connection(2)-172.17.144.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-25 10:37:04.397  INFO 20824 --- [RMI TCP Connection(2)-172.17.144.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-02-25 10:43:21.007  INFO 20824 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-25 10:43:21.007  INFO 20824 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-02-25 10:43:21.040  INFO 20824 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-25 10:43:21.049  INFO 20824 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

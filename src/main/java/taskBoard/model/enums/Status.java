@@ -1,4 +1,4 @@
-package taskBoard.model;
+package taskBoard.model.enums;
 
 public enum Status {
     BACKLOG,

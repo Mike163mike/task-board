@@ -1,10 +1,12 @@
 databaseChangeLog:
-  -  changeSet:
-       id:  init
-       author:  Mike
-       changes:
-         -  sqlFile:
-              path:  /create-task-board.sql
+  - changeSet:
+      id: init
+      author: Mike
+      changes:
+        - sqlFile:
+            path: /create_task_board.sql
+#        - sqlFile:
+#            path: /create_project.sql
 #         dbms:  '!h2,  oracle,  mysql'
 #         endDelimiter:  \nGO
 #         splitStatements:  true

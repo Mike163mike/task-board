@@ -1,8 +1,8 @@
 package taskBoard.model;
 
-import javax.persistence.*;
+import taskBoard.model.enums.Status;
 
-import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class Task {
@@ -13,9 +13,9 @@ public class Task {
 
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //  @JoinColumn(name = "status_id")
-    private StatusEntity statusEntity;
+    //@Column(name = "status")
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     //@JoinColumn(name = "author_id")
@@ -29,15 +29,24 @@ public class Task {
     // @JoinColumn(name = "release_version_id")
     private VersionRelease versionRelease;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "task")
-    private Project project;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "board_id")
+    private Board board;
 
-    public StatusEntity getStatusEntity() {
-        return statusEntity;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusEntity(StatusEntity statusEntity) {
-        this.statusEntity = statusEntity;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public Employee getAuthor() {
@@ -68,15 +77,4 @@ public class Task {
         this.versionRelease = versionRelease;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", statusEntity=" + statusEntity +
-                ", author=" + author +
-                ", developer=" + developer +
-                ", versionRelease=" + versionRelease +
-                '}';
-    }
 }

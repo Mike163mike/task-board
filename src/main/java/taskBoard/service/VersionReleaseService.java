@@ -3,7 +3,6 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import taskBoard.model.Employee;
 import taskBoard.model.VersionRelease;
 import taskBoard.repository.VersionReleaseRepository;
 

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import taskBoard.model.Task;
 import taskBoard.repository.TaskRepository;
 
-import java.time.LocalDate;
-
 @Service
 public class TaskService {
 

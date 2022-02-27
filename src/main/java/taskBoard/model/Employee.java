@@ -1,8 +1,9 @@
 package taskBoard.model;
 
 import javax.persistence.*;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -16,14 +17,13 @@ public class Employee {
     private String name;
 
     @OneToMany(mappedBy = "author")
-    private List<Task> authorsTasks = new ArrayList<>();
+    private Set<Task> authorsTasks = new HashSet<>();
 
     @OneToMany(mappedBy = "developer")
-    private List<Task> developersTasks = new ArrayList<>();
+    private Set<Task> developersTasks = new HashSet<>();
 
-
-//    @OneToOne(optional = false, cascade = CascadeType.ALL)
-//    private Employee developer;
+    @Transient
+    private Set<Employee> employees = new HashSet<>();
 
     public long getId() {
         return id;
@@ -45,20 +45,41 @@ public class Employee {
         this.name = name;
     }
 
-    public List<Task> getAuthorsTasks() {
+    public Set<Task> getAuthorsTasks() {
         return authorsTasks;
     }
 
-    public void setAuthorsTasks(List<Task> authorsTasks) {
+    public void setAuthorsTasks(Set<Task> authorsTasks) {
         this.authorsTasks = authorsTasks;
     }
 
-    public List<Task> getDevelopersTasks() {
+    public Set<Task> getDevelopersTasks() {
         return developersTasks;
     }
 
-    public void setDevelopersTasks(List<Task> developersTasks) {
+    public void setDevelopersTasks(Set<Task> developersTasks) {
         this.developersTasks = developersTasks;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, surname, name, authorsTasks, developersTasks);
     }
 
     @Override

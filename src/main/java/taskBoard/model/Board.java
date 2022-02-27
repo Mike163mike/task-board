@@ -37,4 +37,26 @@ public class Board {
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return id == board.id && Objects.equals(project, board.project) && Objects.equals(tasks, board.tasks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, project, tasks);
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "id=" + id +
+                ", project=" + project +
+                ", tasks=" + tasks +
+                '}';
+    }
 }

@@ -6,7 +6,6 @@ import java.util.*;
 
 @Entity
 //@Table(name = "release_version")
-//@Component
 public class VersionRelease extends Task {
 
     @Id
@@ -48,6 +47,20 @@ public class VersionRelease extends Task {
 
     public void setTasks(List<Task> taskIdList) {
         this.tasks = taskIdList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        VersionRelease that = (VersionRelease) o;
+        return id == that.id && Objects.equals(start, that.start) && Objects.equals(finish, that.finish) && Objects.equals(tasks, that.tasks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id, start, finish, tasks);
     }
 
     @Override

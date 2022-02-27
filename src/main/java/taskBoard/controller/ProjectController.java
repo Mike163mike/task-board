@@ -11,8 +11,8 @@ import taskBoard.model.Task;
 import taskBoard.service.ProjectService;
 
 @RestController
-@RequestMapping("/taskBoard/tasks")
-//@Api("Контроллер Доски задач")
+@RequestMapping("/taskBoardProject")
+//@Api("Контроллер проекта Доски задач")
 public class ProjectController {
 
     private final ProjectService service;
@@ -21,7 +21,9 @@ public class ProjectController {
         this.service = service;
     }
 
-    @GetMapping
+    //@RequestParam(value="name", required = fals) String name - не падает, подставляет null
+    //добавить в параметры модель Model model спринг внедрит бин в метод
+    @GetMapping("/task")
     @ApiOperation("Получение списка всех задач")
     public Set<Task> getAll() {
         return null;
@@ -40,7 +42,7 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    //@ApiOperation("Обновление задачи по ip")
+    //@ApiOperation("Обновление задачи по id")
     public void update(@PathVariable long id, @RequestBody Task taskId) {
 
     }

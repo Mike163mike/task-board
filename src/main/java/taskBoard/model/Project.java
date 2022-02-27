@@ -2,6 +2,7 @@ package taskBoard.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -34,5 +35,27 @@ public class Project {
 
     public void setBoards(Set<Board> boards) {
         this.boards = boards;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return Objects.equals(id, project.id) && Objects.equals(name, project.name) && Objects.equals(boards, project.boards);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, boards);
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", boards=" + boards +
+                '}';
     }
 }

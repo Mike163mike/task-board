@@ -3,6 +3,7 @@ package taskBoard.model;
 import taskBoard.model.enums.Status;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Task {
@@ -14,7 +15,6 @@ public class Task {
     private String name;
 
     //@Column(name = "status")
-    @Enumerated(value = EnumType.STRING)
     private Status status;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
@@ -77,4 +77,29 @@ public class Task {
         this.versionRelease = versionRelease;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(name, task.name) && status == task.status && Objects.equals(author, task.author) && Objects.equals(developer, task.developer) && Objects.equals(versionRelease, task.versionRelease) && Objects.equals(board, task.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, status, author, developer, versionRelease, board);
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                ", author=" + author +
+                ", developer=" + developer +
+                ", versionRelease=" + versionRelease +
+                ", board=" + board +
+                '}';
+    }
 }

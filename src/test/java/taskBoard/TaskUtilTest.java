@@ -6,7 +6,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import taskBoard.model.Task;
 import taskBoard.model.VersionRelease;
-import taskBoard.util.TaskUtil;
+import taskBoard.utilities.TaskUtil;
 
 import java.time.LocalDate;
 

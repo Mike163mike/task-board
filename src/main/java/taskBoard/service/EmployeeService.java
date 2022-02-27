@@ -10,6 +10,7 @@ import taskBoard.repository.EmployeeRepository;
 import taskBoard.service.mapper.EmployeeMapper;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -41,18 +42,20 @@ public class EmployeeService {
         repository.delete(employee);
     }
 
-    public Employee findById(Long id) {
+    public EmployeeDto findById(Long id) {
 
         logger.debug("Ищем объект \"Employee\" с id = " + id);
 
-        return repository.findById(id)
-                .orElseThrow(() -> new EmployeeNotFoundException(id));
+        return employeeMapper.toDto(repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
-    public Set<Employee> findAll() {
+    public Set<EmployeeDto> findAll() {
 
         logger.debug("Ищем всех сотрудников");
 
-        return new HashSet<>(repository.findAll());
+        return repository.findAll().stream()
+                .map(employeeMapper::toDto)
+                .collect(Collectors.toSet());
     }
 }

@@ -11,7 +11,7 @@ public class VersionReleaseService {
 
     static Logger logger = LoggerFactory.getLogger(VersionReleaseService.class);
 
-    private VersionReleaseRepository repository;
+    private final VersionReleaseRepository repository;
 
     public VersionReleaseService(VersionReleaseRepository repository) {
         this.repository = repository;

@@ -7,12 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.dto.EmployeeDto;
-import taskBoard.model.Employee;
 import taskBoard.service.EmployeeService;
-import taskBoard.service.mapper.EmployeeMapper;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/employee")
@@ -21,11 +18,9 @@ public class EmployeeController {
     static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     private final EmployeeService employeeService;
-    private final EmployeeMapper employeeMapper;
 
-    public EmployeeController(EmployeeService employeeService, EmployeeMapper employeeMapper) {
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
-        this.employeeMapper = employeeMapper;
     }
 
     @GetMapping
@@ -34,11 +29,11 @@ public class EmployeeController {
 
         logger.debug("Получение списка всех сотрудников");
 
-        Set<Employee> employees = employeeService.findAll();
+        Set<EmployeeDto> employeeDtos = employeeService.findAll();
 
-        Set<EmployeeDto> employeeDtos = employees.stream()
-                .map(employeeMapper::toDto)
-                .collect(Collectors.toSet());
+        if (employeeDtos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(employeeDtos, HttpStatus.OK);
 
@@ -55,14 +50,14 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Employee employee = employeeService.findById(id);
+        EmployeeDto employeeDto = employeeService.findById(id);
 
-        if (employee == null) {
+        if (employeeDto == null) {
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(employeeMapper.toDto(employee), HttpStatus.OK);
+        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
     }
 
 
@@ -77,7 +72,7 @@ public class EmployeeController {
         }
         EmployeeDto newEmployeeDto = employeeService.createEmployee(employeeDto);
 
-        return new ResponseEntity<>(newEmployeeDto, HttpStatus.OK);
+        return new ResponseEntity<>(newEmployeeDto, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}/edit")
@@ -101,8 +96,9 @@ public class EmployeeController {
 
         logger.debug("Удаляем сотрудника с указанным id");
 
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        EmployeeDto employeeDto = employeeService.findById(id);
+        if (employeeDto == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         employeeService.deleteById(id);

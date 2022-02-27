@@ -11,7 +11,7 @@ public class TaskService {
 
     static Logger logger = LoggerFactory.getLogger(TaskService.class);
 
-    private TaskRepository repository;
+    private final TaskRepository repository;
 
     public TaskService(TaskRepository repository) {
         this.repository = repository;

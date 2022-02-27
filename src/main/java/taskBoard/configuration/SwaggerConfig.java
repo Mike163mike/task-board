@@ -22,7 +22,7 @@ public class SwaggerConfig {
                         .contact(new Contact("Mike", "", "mick_mick_mick@icloud.com"))
                         .build())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("taskBoard.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("taskBoard.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

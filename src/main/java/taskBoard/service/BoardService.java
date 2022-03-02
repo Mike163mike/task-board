@@ -3,8 +3,14 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import taskBoard.dto.BoardDto;
+import taskBoard.exeption.BoardNotFoundException;
 import taskBoard.model.Board;
 import taskBoard.repository.BoardRepository;
+import taskBoard.service.mapper.BoardMapper;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -12,24 +18,47 @@ public class BoardService {
     static Logger logger = LoggerFactory.getLogger(BoardService.class);
 
     private final BoardRepository repository;
+    private final BoardMapper boardMapper;
 
-    public BoardService(BoardRepository repository) {
+    public BoardService(BoardRepository repository, BoardMapper boardMapper) {
         this.repository = repository;
+        this.boardMapper = boardMapper;
     }
 
-    public Board create(Board board) {
-        logger.debug("Создаём объект \"Board\" c id = " + board.getId());
-        return repository.save(board);
+    public BoardDto createBoard(BoardDto boardDto) {
+
+        logger.debug("Создаём объект \"Board\"");
+
+        Board entity = boardMapper.toEntity(boardDto);
+        Board save = repository.save(entity);
+
+        return boardMapper.toDto(save);
     }
 
     public void deleteById(Long id) {
+
         logger.debug("Удаляем объект \"Board\" c id = " + id);
-        repository.deleteById(id);
+
+        Board board = repository.findById(id)
+                .orElseThrow(() -> new BoardNotFoundException(id));
+
+        repository.delete(board);
     }
 
-    public Board findById(long id) {
+    public BoardDto findById(Long id) {
+
         logger.debug("Ищем объект \"Board\" с id = " + id);
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Board with id = " + id + " was not found"));
+
+        return boardMapper.toDto(repository.findById(id)
+                .orElseThrow(() -> new BoardNotFoundException(id)));
+    }
+
+    public Set<BoardDto> findAll() {
+
+        logger.debug("Ищем всех сотрудников");
+
+        return repository.findAll().stream()
+                .map(boardMapper::toDto)
+                .collect(Collectors.toSet());
     }
 }

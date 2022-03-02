@@ -29,7 +29,10 @@ public class EmployeeService {
 
         logger.debug("Создаём объект \"Employee\"");
 
-        return employeeMapper.toDto(repository.save(employeeMapper.toEntity(employeeDto)));
+        Employee entity = employeeMapper.toEntity(employeeDto);
+        Employee save = repository.save(entity);
+
+        return employeeMapper.toDto(save);
     }
 
     public void deleteById(Long id) {

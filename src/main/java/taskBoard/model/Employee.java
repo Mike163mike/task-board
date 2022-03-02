@@ -25,7 +25,7 @@ public class Employee {
     @Transient
     private Set<Employee> employees = new HashSet<>();
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

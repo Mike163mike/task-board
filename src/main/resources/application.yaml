@@ -3,13 +3,13 @@ spring:
 #    pathmatch:
 #      matching-strategy: ant_path_matcher
   liquibase:
-    change-log: db/changelog/changeset/create_task_board.sql
+    enabled: true
+    change-log: db/changelog/db.changelog-master.yaml
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/task_board
     username: postgres
     password: root
-
   jpa:
     hibernate:
       ddl-auto: create-drop

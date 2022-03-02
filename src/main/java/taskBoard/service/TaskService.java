@@ -3,8 +3,14 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import taskBoard.dto.TaskDto;
+import taskBoard.exeption.TaskNotFoundException;
 import taskBoard.model.Task;
 import taskBoard.repository.TaskRepository;
+import taskBoard.service.mapper.TaskMapper;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -12,30 +18,47 @@ public class TaskService {
     static Logger logger = LoggerFactory.getLogger(TaskService.class);
 
     private final TaskRepository repository;
+    private final TaskMapper taskMapper;
 
-    public TaskService(TaskRepository repository) {
+    public TaskService(TaskRepository repository, TaskMapper taskMapper) {
         this.repository = repository;
+        this.taskMapper = taskMapper;
     }
 
-    public Task create(Task task) {
+    public TaskDto createTask(TaskDto taskDto) {
 
-        logger.debug("Создаём объект \"Task\" c id = " + task.getId());
+        logger.debug("Создаём объект \"Task\"");
 
-        return repository.save(task);
+        Task entity = taskMapper.toEntity(taskDto);
+        Task save = repository.save(entity);
+
+        return taskMapper.toDto(save);
     }
 
     public void deleteById(Long id) {
 
-        logger.debug("Удаляем объект \"Task\" c id = " + id);
+        logger.debug("Удаляем объект \"Task\" c id: " + id);
 
-        repository.deleteById(id);
+        Task task = repository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
+
+        repository.delete(task);
     }
 
-    public Task findById(long id) {
+    public TaskDto findById(Long id) {
 
-        logger.debug("Ищем объект \"Task\" с id = " + id);
+        logger.debug("Ищем объект \"Task\" с id: " + id);
 
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task with id = " + id + " was not found"));
+        return taskMapper.toDto(repository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id)));
+    }
+
+    public Set<TaskDto> findAll() {
+
+        logger.debug("Ищем все задачи");
+
+        return repository.findAll().stream()
+                .map(taskMapper::toDto)
+                .collect(Collectors.toSet());
     }
 }

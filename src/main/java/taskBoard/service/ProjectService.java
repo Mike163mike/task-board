@@ -3,8 +3,14 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import taskBoard.dto.ProjectDto;
+import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.model.Project;
 import taskBoard.repository.ProjectRepository;
+import taskBoard.service.mapper.ProjectMapper;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
@@ -12,32 +18,50 @@ public class ProjectService {
     static Logger logger = LoggerFactory.getLogger(Project.class);
 
     private final ProjectRepository repository;
+    private final ProjectMapper projectMapper;
 
-    public ProjectService(ProjectRepository repository) {
+    public ProjectService(ProjectRepository repository, ProjectMapper projectMapper) {
         this.repository = repository;
+        this.projectMapper = projectMapper;
     }
 
-    public Project create(Project project) {
+    public ProjectDto createProject(ProjectDto projectDto) {
 
-        logger.debug("Создаём объект \"Project\" c id = " + project.getId());
+        logger.debug("Создаём объект \"Project\"");
 
-        return repository.save(project);
+        Project entity = projectMapper.toEntity(projectDto);
+        Project save = repository.save(entity);
+
+        return projectMapper.toDto(save);
+
     }
 
     public void deleteById(Long id) {
 
         logger.debug("Удаляем объект \"Project\" c id = " + id);
 
-        repository.deleteById(id);
+        Project project = repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
+
+        repository.delete(project);
     }
 
-    public Project findById(Long id) {
+    public ProjectDto findById(Long id) {
 
         logger.debug("Ищем объект \"Project\" с id = " + id);
 
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Project with id = " + id + "was not found"));
+        return projectMapper.toDto(repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
+    public Set<ProjectDto> findAll() {
+
+        logger.debug("Ищем все проекты");
+
+        return repository.findAll().stream()
+                .map(projectMapper::toDto)
+                .collect(Collectors.toSet());
+    }
 }
+
 

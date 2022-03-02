@@ -7,12 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.dto.EmployeeDto;
+import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.service.EmployeeService;
 
 import java.util.Set;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("task-board/employee")
 public class EmployeeController {
 
     static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
@@ -32,11 +33,10 @@ public class EmployeeController {
         Set<EmployeeDto> employeeDtos = employeeService.findAll();
 
         if (employeeDtos.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new EmployeeNotFoundException();
         }
 
-        return new ResponseEntity<>(employeeDtos, HttpStatus.OK);
-
+        return ResponseEntity.ok(employeeDtos);
     }
 
     @GetMapping("/new/{id}")
@@ -46,18 +46,16 @@ public class EmployeeController {
         logger.debug("Получение сотрудника по id");
 
         if (id == null) {
-
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         EmployeeDto employeeDto = employeeService.findById(id);
 
         if (employeeDto == null) {
-
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new EmployeeNotFoundException(id);
         }
 
-        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+        return ResponseEntity.ok(employeeDto);
     }
 
 
@@ -75,7 +73,7 @@ public class EmployeeController {
         return new ResponseEntity<>(newEmployeeDto, HttpStatus.CREATED);
     }
 
-    @PatchMapping("/{id}/edit")
+    @PutMapping("/{id}")
     @ApiOperation("Обновляем данные сотрудника с указанным id")
     public ResponseEntity<EmployeeDto> update(@ModelAttribute("employee") EmployeeDto employeeDto,
                                               @PathVariable("id") Long id) {
@@ -87,7 +85,7 @@ public class EmployeeController {
         }
         EmployeeDto newEmployeeDto = employeeService.createEmployee(employeeDto);
 
-        return new ResponseEntity<>(newEmployeeDto, HttpStatus.OK);
+        return ResponseEntity.ok(newEmployeeDto);
     }
 
     @DeleteMapping("/{id}")
@@ -98,7 +96,7 @@ public class EmployeeController {
 
         EmployeeDto employeeDto = employeeService.findById(id);
         if (employeeDto == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new EmployeeNotFoundException(id);
         }
 
         employeeService.deleteById(id);

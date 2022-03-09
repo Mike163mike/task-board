@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS employee
     name    varchar(60)
 );
 
-CREATE TABLE IF NOT EXISTS release_version
+CREATE TABLE IF NOT EXISTS version_release
 (
     id          serial PRIMARY KEY,
     start_date  date,
@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS task
     status             character varying,
     author_id          int REFERENCES employee,
     developer_id       int REFERENCES employee,
-    release_version_id int REFERENCES release_version,
+    version_release_id int REFERENCES version_release,
     board_id           int REFERENCES board
 );
+
+--rollback drop table employee, version_release, project, board, task;

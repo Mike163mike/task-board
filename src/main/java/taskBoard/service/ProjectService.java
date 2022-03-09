@@ -3,7 +3,7 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import taskBoard.dto.ProjectDto;
+import taskBoard.service.dto.ProjectDto;
 import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.model.Project;
 import taskBoard.repository.ProjectRepository;
@@ -26,38 +26,28 @@ public class ProjectService {
     }
 
     public ProjectDto createProject(ProjectDto projectDto) {
-
         logger.debug("Создаём объект \"Project\"");
-
         Project entity = projectMapper.toEntity(projectDto);
         Project save = repository.save(entity);
-
         return projectMapper.toDto(save);
 
     }
 
     public void deleteById(Long id) {
-
         logger.debug("Удаляем объект \"Project\" c id = " + id);
-
         Project project = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
-
         repository.delete(project);
     }
 
     public ProjectDto findById(Long id) {
-
         logger.debug("Ищем объект \"Project\" с id = " + id);
-
         return projectMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id)));
     }
 
     public Set<ProjectDto> findAll() {
-
         logger.debug("Ищем все проекты");
-
         return repository.findAll().stream()
                 .map(projectMapper::toDto)
                 .collect(Collectors.toSet());

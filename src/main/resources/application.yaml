@@ -4,7 +4,6 @@ spring:
 #      matching-strategy: ant_path_matcher
   liquibase:
     enabled: true
-    change-log: db/changelog/db.changelog-master.yaml
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/task_board
@@ -12,7 +11,7 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
 logging:

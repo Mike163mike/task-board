@@ -2,43 +2,40 @@ package taskBoard.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-//@Table(name = "release_version")
-public class VersionRelease extends Task {
+public class VersionRelease {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private LocalDate startDate;
+    private LocalDate finishDate;
 
-  //  @Column(name = "start_date")
-    private LocalDate start;
-
-    //@Column(name = "finish_date")
-    private LocalDate finish;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public LocalDate getStart() {
-        return start;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStart(LocalDate start) {
-        this.start = start;
+    public void setStartDate(LocalDate start) {
+        this.startDate = start;
     }
 
-    public LocalDate getFinish() {
-        return finish;
+    public LocalDate getFinishDate() {
+        return finishDate;
     }
 
-    public void setFinish(LocalDate finish) {
-        this.finish = finish;
+    public void setFinishDate(LocalDate finish) {
+        this.finishDate = finish;
     }
 
     public List<Task> getTasks() {
@@ -55,20 +52,20 @@ public class VersionRelease extends Task {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         VersionRelease that = (VersionRelease) o;
-        return id == that.id && Objects.equals(start, that.start) && Objects.equals(finish, that.finish) && Objects.equals(tasks, that.tasks);
+        return Objects.equals(id, that.id) && Objects.equals(startDate, that.startDate) && Objects.equals(finishDate, that.finishDate) && Objects.equals(tasks, that.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, start, finish, tasks);
+        return Objects.hash(super.hashCode(), id, startDate, finishDate, tasks);
     }
 
     @Override
     public String toString() {
         return "VersionRelease{" +
                 "id=" + id +
-                ", start=" + start +
-                ", finish=" + finish +
+                ", start=" + startDate +
+                ", finish=" + finishDate +
                 ", taskList=" + tasks +
                 '}';
     }

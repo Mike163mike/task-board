@@ -1,5 +1,7 @@
 package taskBoard.model;
 
+import taskBoard.model.enums.Role;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -9,23 +11,26 @@ import java.util.Set;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String surname;
-
     private String name;
+    private String email;
+    private String password;
 
-    @OneToMany(mappedBy = "author")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Task> authorsTasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "developer")
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
     private Set<Task> developersTasks = new HashSet<>();
 
     @Transient
     private Set<Employee> employees = new HashSet<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -43,6 +48,22 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Task> getAuthorsTasks() {
@@ -69,17 +90,25 @@ public class Employee {
         this.employees = employees;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks);
+        return Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && role == employee.role && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks) && Objects.equals(employees, employee.employees);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, surname, name, authorsTasks, developersTasks);
+        return Objects.hash(id, surname, name, email, password, role, authorsTasks, developersTasks, employees);
     }
 
     @Override
@@ -88,6 +117,9 @@ public class Employee {
                 "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

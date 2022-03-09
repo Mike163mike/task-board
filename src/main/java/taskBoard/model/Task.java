@@ -9,28 +9,23 @@ import java.util.Objects;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
-    //@Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "author_id")
+    @ManyToOne(optional = false)
     private Employee author;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "developer_id")
+    @ManyToOne(optional = false)
     private Employee developer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-    // @JoinColumn(name = "release_version_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private VersionRelease versionRelease;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "board_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Board board;
 
     public String getName() {
@@ -73,7 +68,7 @@ public class Task {
         this.developer = developer;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -1,12 +1,8 @@
-package taskBoard.dto;
+package taskBoard.service.dto;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class ProjectDto {
 
     private String name;
-
     public String getName() {
         return name;
     }

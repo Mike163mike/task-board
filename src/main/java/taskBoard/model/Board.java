@@ -8,17 +8,16 @@ import java.util.*;
 public class Board {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @ManyToOne
-    // @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = CascadeType.ALL)
     private Set<Task> tasks = new HashSet<>();
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -43,7 +42,7 @@ public class Board {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Board board = (Board) o;
-        return id == board.id && Objects.equals(project, board.project) && Objects.equals(tasks, board.tasks);
+        return Objects.equals(id, board.id) && Objects.equals(project, board.project) && Objects.equals(tasks, board.tasks);
     }
 
     @Override

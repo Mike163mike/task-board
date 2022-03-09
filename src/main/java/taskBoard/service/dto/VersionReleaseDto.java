@@ -1,14 +1,10 @@
-package taskBoard.dto;
-
-import org.springframework.stereotype.Component;
+package taskBoard.service.dto;
 
 import java.time.LocalDate;
 
-@Component
 public class VersionReleaseDto {
 
     private LocalDate finish;
-
     private LocalDate start;
 
     public LocalDate getFinish() {

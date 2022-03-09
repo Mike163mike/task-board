@@ -1,13 +1,3 @@
 databaseChangeLog:
-  - changeSet:
-      id: init
-      author: Mike
-      changes:
-        - sqlFile:
-            path: db/changelog/changeset/create_task_board.sql
-  - changeSet:
-      id: drop_table
-      author: Mike
-      changes:
-        - sqlFile:
-            path: db/changelog/changeset/delete_ status_table.sql
+  - include:
+      file: db/changelog/db.changeLog-1.yaml

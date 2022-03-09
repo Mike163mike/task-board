@@ -1,7 +1,7 @@
 package taskBoard.service.mapper;
 
 import org.springframework.stereotype.Component;
-import taskBoard.dto.BoardDto;
+import taskBoard.service.dto.BoardDto;
 import taskBoard.model.Board;
 
 @Component

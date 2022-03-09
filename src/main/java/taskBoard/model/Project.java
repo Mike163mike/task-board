@@ -9,17 +9,16 @@ import java.util.Set;
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
-    public long getId() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)
+    private Set<Board> boards = new HashSet<>();
+
+    public Integer getId() {
         return id;
     }
-
-    @OneToMany
-    private Set<Board> boards = new HashSet<>();
 
     public String getName() {
         return name;

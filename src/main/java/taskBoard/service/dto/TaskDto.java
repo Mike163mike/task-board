@@ -1,12 +1,11 @@
-package taskBoard.dto;
+package taskBoard.service.dto;
 
-import org.springframework.stereotype.Component;
 import taskBoard.model.Board;
 import taskBoard.model.Employee;
 import taskBoard.model.VersionRelease;
 import taskBoard.model.enums.Status;
 
-@Component
+
 public class TaskDto {
 
     private String name;

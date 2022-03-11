@@ -14,6 +14,7 @@ public class EmployeeMapper {
         employeeDto.setEmail(employee.getEmail());
         employeeDto.setPassword(employee.getPassword());
         employeeDto.setRole(employee.getRole());
+        employeeDto.setSubscription(employee.isSubscription());
         return employeeDto;
     }
 
@@ -24,6 +25,7 @@ public class EmployeeMapper {
         employee.setEmail(employeeDto.getEmail());
         employee.setPassword(employeeDto.getPassword());
         employee.setRole(employeeDto.getRole());
+        employee.setSubscription(employeeDto.isSubscription());
         return employee;
     }
 

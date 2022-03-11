@@ -1,5 +1,7 @@
 package taskBoard.security;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -8,6 +10,8 @@ import java.util.Objects;
 public class LoginResponse {
 
     private boolean result;
+
+    @JsonProperty("user")
     private UserLoginResponse userLoginResponse;
 
     public LoginResponse() {

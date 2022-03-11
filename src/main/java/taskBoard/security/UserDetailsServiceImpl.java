@@ -13,7 +13,7 @@ import taskBoard.service.mapper.EmployeeMapper;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    Logger logger = LoggerFactory.getLogger(UserDetailsService.class);
+    static Logger logger = LoggerFactory.getLogger(UserDetailsService.class);
 
     private final EmployeeService employeeService;
     private final EmployeeMapper employeeMapper;

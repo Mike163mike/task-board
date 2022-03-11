@@ -18,7 +18,7 @@ public class SwaggerConfig {
         return new Docket(SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
                         .title("Task board")
-                        .description("Trainee RESTfull App")
+                        .description("Training RESTful App")
                         .contact(new Contact("Mike", "", "mick_mick_mick@icloud.com"))
                         .build())
                 .select()

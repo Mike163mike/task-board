@@ -1,7 +1,9 @@
 package taskBoard.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import taskBoard.model.enums.Role;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmployeeDto {
 
     private String name;
@@ -9,6 +11,7 @@ public class EmployeeDto {
     private String email;
     private String password;
     private Role role;
+    private boolean subscription;
 
     public String getName() {
         return name;
@@ -48,5 +51,13 @@ public class EmployeeDto {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(boolean subscription) {
+        this.subscription = subscription;
     }
 }

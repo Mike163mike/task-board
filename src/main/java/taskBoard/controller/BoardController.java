@@ -20,12 +20,13 @@ public class BoardController {
 
     static Logger logger = LoggerFactory.getLogger(BoardController.class);
     private final BoardService boardService;
+
     public BoardController(BoardService boardService) {
         this.boardService = boardService;
     }
 
     @GetMapping
-    @ApiOperation("Получение Set'a всех досок задач")
+    @ApiOperation("Получение множества всех досок задач")
     @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<BoardDto>> getAll() {
         logger.debug("Получение списка всех досок задач");

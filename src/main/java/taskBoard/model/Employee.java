@@ -20,6 +20,7 @@ public class Employee {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    private boolean subscription;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Task> authorsTasks = new HashSet<>();
@@ -66,6 +67,14 @@ public class Employee {
         this.password = password;
     }
 
+    public boolean isSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(boolean subscription) {
+        this.subscription = subscription;
+    }
+
     public Set<Task> getAuthorsTasks() {
         return authorsTasks;
     }
@@ -103,12 +112,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && role == employee.role && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks) && Objects.equals(employees, employee.employees);
+        return subscription == employee.subscription && Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && role == employee.role && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks) && Objects.equals(employees, employee.employees);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, surname, name, email, password, role, authorsTasks, developersTasks, employees);
+        return Objects.hash(id, surname, name, email, password, role, subscription, authorsTasks, developersTasks, employees);
     }
 
     @Override
@@ -120,6 +129,8 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", subscription=" + subscription +
+                ", employees=" + employees +
                 '}';
     }
 }

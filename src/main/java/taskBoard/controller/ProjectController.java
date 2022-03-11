@@ -20,12 +20,13 @@ public class ProjectController {
 
     static Logger logger = LoggerFactory.getLogger(taskBoard.controller.EmployeeController.class);
     private final ProjectService projectService;
+
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
 
     @GetMapping
-    @ApiOperation("Получение Set'a всех проектов")
+    @ApiOperation("Получение множества всех проектов")
     @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<ProjectDto>> getAll() {
         logger.debug("Получение списка всех проектов");

@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.service.dto.EmployeeDto;
 import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.service.EmployeeService;
+import taskBoard.service.dto.EmployeeDto;
 
 import java.util.Set;
 
@@ -20,12 +20,13 @@ public class EmployeeController {
 
     static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
     private final EmployeeService employeeService;
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
     @GetMapping
-    @ApiOperation("Получение Set'a всех сотрудников")
+    @ApiOperation("Получение множества всех сотрудников")
     @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<EmployeeDto>> getAll() {
         logger.debug("Получение списка всех сотрудников");

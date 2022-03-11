@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,7 +22,7 @@ import taskBoard.service.EmployeeService;
 import taskBoard.service.mapper.EmployeeMapper;
 
 @RestController
-@RequestMapping("/task-board/")
+@RequestMapping("/task-board")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -37,28 +38,35 @@ public class AuthController {
         this.employeeMapper = employeeMapper;
     }
 
-    @PostMapping("/login")
+    @PostMapping
     @ApiOperation("Авторизация пользователя")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         logger.debug("Got e - mail: " + loginRequest.getEmail() + " and password: " + loginRequest.getPassword() +
-                " and try to authenticate currentUser.");
+                " and try to authenticate User.");
+        LoginResponse loginResponse = getAuthentificationOfUser(loginRequest);
+        return ResponseEntity.ok(loginResponse);
+    }
+
+    private LoginResponse getAuthentificationOfUser(LoginRequest loginRequest) {
         Authentication authentication;
         try {
             authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
                             loginRequest.getPassword()));
         } catch (AuthenticationException e) {
-           throw new FailedAuthenticationException();
+            throw new FailedAuthenticationException();
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        User currentUser = (User) authentication.getPrincipal();
-        Employee employee = employeeMapper.toEntity(employeeService.findByEmail(currentUser.getUsername()));
+        User User = (User) authentication.getPrincipal();
+        Employee employee = employeeMapper.toEntity(employeeService.findByEmail(User.getUsername()));
         UserLoginResponse userLoginResponse = new UserLoginResponse();
-        userLoginResponse.setEmail(currentUser.getUsername());
-//*************************
+        userLoginResponse.setEmail(employee.getEmail());
+        userLoginResponse.setModeration(employee.isSubscription());
+        userLoginResponse.setId(employee.getId());
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setResult(true);
         loginResponse.setUserLoginResponse(userLoginResponse);
-        return ResponseEntity.ok(loginResponse);
+        return loginResponse;
     }
 }

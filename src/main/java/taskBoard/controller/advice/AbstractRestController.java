@@ -11,6 +11,6 @@ public class AbstractRestController {
 
     @ExceptionHandler({AppException.class})
     public ResponseEntity<String> exceptionHandler(AppException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(e.getMessage() + "*** adviser!!!!", HttpStatus.NOT_FOUND);
     }
 }

@@ -17,3 +17,9 @@ databaseChangeLog:
       changes:
         - sqlFile:
             path: db/changelog/changeset/add_role_column_in_employee.sql
+  - changeSet:
+      id: add_subscription.sql
+      author: Mike
+      changes:
+        - sqlFile:
+            path: db/changelog/changeset/add_subscription.sql

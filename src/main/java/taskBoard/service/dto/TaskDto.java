@@ -1,11 +1,12 @@
 package taskBoard.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import taskBoard.model.Board;
 import taskBoard.model.Employee;
 import taskBoard.model.VersionRelease;
 import taskBoard.model.enums.Status;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto {
 
     private String name;

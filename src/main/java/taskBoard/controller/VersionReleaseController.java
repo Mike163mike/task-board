@@ -21,12 +21,13 @@ public class VersionReleaseController {
 
     static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
     private final VersionReleaseService versionReleaseService;
+
     public VersionReleaseController(VersionReleaseService versionReleaseService) {
         this.versionReleaseService = versionReleaseService;
     }
 
     @GetMapping
-    @ApiOperation("Получение Set'a всех релизов версий")
+    @ApiOperation("Получение множества всех релизов версий")
     @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<VersionReleaseDto>> getAll() {
         logger.debug("Получение списка всех релизов версий");

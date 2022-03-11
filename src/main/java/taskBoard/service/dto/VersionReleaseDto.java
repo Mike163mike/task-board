@@ -1,7 +1,10 @@
 package taskBoard.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VersionReleaseDto {
 
     private LocalDate finish;

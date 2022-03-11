@@ -20,12 +20,13 @@ public class TaskController {
 
     static Logger logger = LoggerFactory.getLogger(TaskController.class);
     private final TaskService taskService;
+
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @GetMapping
-    @ApiOperation("Получение Set'a всех задач")
+    @ApiOperation("Получение множества всех задач")
     @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<TaskDto>> getAll() {
         logger.debug("Получение списка всех задач");

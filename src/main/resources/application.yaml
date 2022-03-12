@@ -1,14 +1,9 @@
 spring:
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
-  liquibase:
-    enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/task_board
+    url: jdbc:postgresql://localhost:5400/task_board
     username: postgres
-    password: root
+    password: docker
   jpa:
     hibernate:
       ddl-auto: validate

@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.service.EmployeeService;
@@ -27,7 +26,6 @@ public class EmployeeController {
 
     @GetMapping
     @ApiOperation("Получение множества всех сотрудников")
-    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<EmployeeDto>> getAll() {
         logger.debug("Получение списка всех сотрудников");
         Set<EmployeeDto> employeeDtos = employeeService.findAll();
@@ -39,7 +37,6 @@ public class EmployeeController {
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение сотрудника по id")
-    @PreAuthorize("hasAuthority('user:read')")
     @NonNull
     public ResponseEntity<EmployeeDto> getById(@PathVariable Long id) {
         logger.debug("Получение сотрудника по id");
@@ -52,7 +49,6 @@ public class EmployeeController {
 
     @PostMapping
     @ApiOperation("Добавляем нового сотрудника")
-    @PreAuthorize("hasAuthority('user:create')")
     @NonNull
     public ResponseEntity<EmployeeDto> create(@RequestBody EmployeeDto employeeDto) {
         logger.debug("Добавляем нового сотрудника");
@@ -62,7 +58,6 @@ public class EmployeeController {
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные сотрудника с указанным id")
-    @PreAuthorize("hasAuthority('user:update')")
     @NonNull
     public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto employeeDto,
                                               @PathVariable("id") Long id) {
@@ -73,7 +68,6 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем сотрудника с указанным id")
-    @PreAuthorize("hasAuthority('user:delete')")
     @NonNull
     public ResponseEntity<EmployeeDto> deleteById(@PathVariable("id") Long id) {
         logger.debug("Удаляем сотрудника с указанным id");

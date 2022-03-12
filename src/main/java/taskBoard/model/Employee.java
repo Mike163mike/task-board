@@ -2,6 +2,7 @@ package taskBoard.model;
 
 import taskBoard.model.enums.Role;
 
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -22,10 +23,10 @@ public class Employee {
     private Role role;
     private boolean subscription;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REFRESH)
     private Set<Task> authorsTasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.REFRESH)
     private Set<Task> developersTasks = new HashSet<>();
 
     @Transient

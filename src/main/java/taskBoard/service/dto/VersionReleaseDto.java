@@ -7,22 +7,22 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VersionReleaseDto {
 
-    private LocalDate finish;
-    private LocalDate start;
+    private LocalDate finishDate;
+    private LocalDate startDate;
 
-    public LocalDate getFinish() {
-        return finish;
+    public LocalDate getFinishDate() {
+        return finishDate;
     }
 
-    public void setFinish(LocalDate finish) {
-        this.finish = finish;
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
     }
 
-    public LocalDate getStart() {
-        return start;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStart(LocalDate start) {
-        this.start = start;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 }

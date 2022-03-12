@@ -9,15 +9,15 @@ public class VersionReleaseMapper {
 
     public VersionReleaseDto toDto(VersionRelease versionRelease) {
         VersionReleaseDto versionReleaseDto = new VersionReleaseDto();
-        versionReleaseDto.setStart(versionRelease.getStartDate());
-        versionReleaseDto.setFinish(versionRelease.getFinishDate());
+        versionReleaseDto.setStartDate(versionRelease.getStartDate());
+        versionReleaseDto.setFinishDate(versionRelease.getFinishDate());
         return versionReleaseDto;
     }
 
     public VersionRelease toEntity(VersionReleaseDto versionReleaseDto) {
         VersionRelease versionRelease = new VersionRelease();
-        versionRelease.setStartDate(versionReleaseDto.getStart());
-        versionRelease.setFinishDate(versionReleaseDto.getFinish());
+        versionRelease.setStartDate(versionReleaseDto.getStartDate());
+        versionRelease.setFinishDate(versionReleaseDto.getFinishDate());
         return versionRelease;
     }
 }

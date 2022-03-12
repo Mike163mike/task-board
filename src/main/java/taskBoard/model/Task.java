@@ -16,16 +16,20 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
     private Employee author;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "developer_id")
     private Employee developer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "version_release_id")
     private VersionRelease versionRelease;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
     private Board board;
 
     public String getName() {

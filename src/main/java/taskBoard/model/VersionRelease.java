@@ -7,15 +7,20 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "version_release")
 public class VersionRelease {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "start_date")
     private LocalDate startDate;
+
+    @Column(name = "finish_date")
     private LocalDate finishDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease", cascade = CascadeType.REFRESH)
     private List<Task> tasks = new ArrayList<>();
 
     public Integer getId() {

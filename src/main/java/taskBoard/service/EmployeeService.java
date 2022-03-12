@@ -2,7 +2,6 @@ package taskBoard.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import taskBoard.service.dto.EmployeeDto;
 import taskBoard.exeption.EmployeeNotFoundException;
@@ -51,16 +50,5 @@ public class EmployeeService {
         return repository.findAll().stream()
                 .map(employeeMapper::toDto)
                 .collect(Collectors.toSet());
-    }
-
-    public EmployeeDto findByEmail(String email) {
-        logger.debug("Ищем сотрудника по e - mail");
-        List<Employee> employees = repository.findAll().stream()
-                .filter(s -> s.getEmail().equals(email))
-                .collect(Collectors.toList());
-        if (employees.isEmpty()) {
-            throw new UsernameNotFoundException("Employee with e-mail: " + email + " not exist");
-        }
-        return employeeMapper.toDto(employees.get(0));
     }
 }

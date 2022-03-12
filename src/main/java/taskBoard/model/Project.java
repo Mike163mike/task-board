@@ -13,7 +13,7 @@ public class Project {
     private Integer id;
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.REFRESH)
     private Set<Board> boards = new HashSet<>();
 
     public Integer getId() {

@@ -1,9 +1,6 @@
 package taskBoard.model.enums;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public enum Role {
     GUEST(Set.of(Permission.READ)),
@@ -17,12 +14,6 @@ public enum Role {
 
     public Set<Permission> getPermissions() {
         return permissions;
-    }
-
-    public Set<SimpleGrantedAuthority> getAuthority() {
-        return permissions.stream()
-                .map(p -> new SimpleGrantedAuthority(p.getPermission()))
-                .collect(Collectors.toSet());
     }
 }
 

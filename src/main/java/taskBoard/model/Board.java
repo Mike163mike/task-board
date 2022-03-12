@@ -11,10 +11,11 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = CascadeType.REFRESH)
     private Set<Task> tasks = new HashSet<>();
 
     public Integer getId() {

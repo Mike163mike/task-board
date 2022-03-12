@@ -22,29 +22,15 @@
     </properties>
 
     <dependencies>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-autoconfigure</artifactId>-->
-<!--            <version>2.6.3</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>4.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -53,27 +39,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.3.3</version>
         </dependency>
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
-<!--            <version>1.6.6</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-core &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger.core.v3</groupId>-->
-<!--            <artifactId>swagger-core</artifactId>-->
-<!--            <version>2.1.12</version>-->
-<!--        </dependency>-->
-
-                <dependency>
+        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
@@ -88,7 +59,6 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>3.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -104,21 +74,9 @@
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-        </dependency>
-
-
-        <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>7.0.1.Final</version>
         </dependency>
-
     </dependencies>
-
 </project>

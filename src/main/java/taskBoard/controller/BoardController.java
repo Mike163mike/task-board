@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.exeption.BoardNotFoundException;
 import taskBoard.service.BoardService;
@@ -27,7 +26,6 @@ public class BoardController {
 
     @GetMapping
     @ApiOperation("Получение множества всех досок задач")
-    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<BoardDto>> getAll() {
         logger.debug("Получение списка всех досок задач");
         Set<BoardDto> boardDtos = boardService.findAll();
@@ -39,7 +37,6 @@ public class BoardController {
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение доски задач по id")
-    @PreAuthorize("hasAuthority('user:read')")
     @NonNull
     public ResponseEntity<BoardDto> getById(@PathVariable Long id) {
         logger.debug("Получение доски задач по id");
@@ -52,7 +49,6 @@ public class BoardController {
 
     @PostMapping
     @ApiOperation("Добавляем новую доску задач")
-    @PreAuthorize("hasAuthority('user:create')")
     @NonNull
     public ResponseEntity<BoardDto> create(@RequestBody BoardDto boardDto) {
         logger.debug("Добавляем новую доску задач");
@@ -62,7 +58,6 @@ public class BoardController {
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные доски задач с указанным id")
-    @PreAuthorize("hasAuthority('user:update')")
     @NonNull
     public ResponseEntity<BoardDto> update(@RequestBody BoardDto boardDto,
                                            @PathVariable("id") Long id) {
@@ -73,7 +68,6 @@ public class BoardController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем доску задач с указанным id")
-    @PreAuthorize("hasAuthority('user:delete')")
     @NonNull
     public ResponseEntity<BoardDto> deleteById(@PathVariable("id") Long id) {
         logger.debug("Удаляем доску задач с указанным id");

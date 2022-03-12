@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.service.dto.ProjectDto;
 import taskBoard.exeption.ProjectNotFoundException;
@@ -27,7 +26,6 @@ public class ProjectController {
 
     @GetMapping
     @ApiOperation("Получение множества всех проектов")
-    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<ProjectDto>> getAll() {
         logger.debug("Получение списка всех проектов");
         Set<ProjectDto> projectDtos = projectService.findAll();
@@ -39,7 +37,6 @@ public class ProjectController {
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение проекта по id")
-    @PreAuthorize("hasAuthority('user:read')")
     @NonNull
     public ResponseEntity<ProjectDto> getById(@PathVariable Long id) {
         logger.debug("Получение проекта по id");
@@ -52,7 +49,6 @@ public class ProjectController {
 
     @PostMapping
     @ApiOperation("Добавляем новый  проект")
-    @PreAuthorize("hasAuthority('user:create')")
     @NonNull
     public ResponseEntity<ProjectDto> create(@RequestBody ProjectDto projectDto) {
         logger.debug("Добавляем новый проект");
@@ -62,7 +58,6 @@ public class ProjectController {
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные проекта с указанным id")
-    @PreAuthorize("hasAuthority('user:update')")
     @NonNull
     public ResponseEntity<ProjectDto> update(@RequestBody ProjectDto projectDto,
                                              @PathVariable("id") Long id) {
@@ -73,7 +68,6 @@ public class ProjectController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем проект с указанным id")
-    @PreAuthorize("hasAuthority('user:delete')")
     @NonNull
     public ResponseEntity<ProjectDto> deleteById(@PathVariable("id") Long id) {
         logger.debug("Удаляем проект с указанным id");

@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.service.dto.VersionReleaseDto;
 import taskBoard.exeption.VersionReleaseNotFoundException;
@@ -28,7 +27,6 @@ public class VersionReleaseController {
 
     @GetMapping
     @ApiOperation("Получение множества всех релизов версий")
-    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Set<VersionReleaseDto>> getAll() {
         logger.debug("Получение списка всех релизов версий");
         Set<VersionReleaseDto> versionReleaseDtos = versionReleaseService.findAll();
@@ -40,7 +38,6 @@ public class VersionReleaseController {
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение релиза версий по id")
-    @PreAuthorize("hasAuthority('user:read')")
     @NonNull
     public ResponseEntity<VersionReleaseDto> getById(@PathVariable Long id) {
         logger.debug("Получение релиза версий по id");
@@ -53,7 +50,6 @@ public class VersionReleaseController {
 
     @PostMapping
     @ApiOperation("Добавляем новый релиз версий")
-    @PreAuthorize("hasAuthority('user:create')")
     @NonNull
     public ResponseEntity<VersionReleaseDto> create(@RequestBody VersionReleaseDto versionReleaseDto) {
         logger.debug("Добавляем новый релиз версий");
@@ -63,7 +59,6 @@ public class VersionReleaseController {
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные релиза версий с указанным id")
-    @PreAuthorize("hasAuthority('user:update')")
     @NonNull
     public ResponseEntity<VersionReleaseDto> update(@RequestBody VersionReleaseDto versionReleaseDto,
                                                     @PathVariable("id") Long id) {
@@ -74,7 +69,6 @@ public class VersionReleaseController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем релиз версий с указанным id")
-    @PreAuthorize("hasAuthority('user:delete')")
     @NonNull
     public ResponseEntity<VersionReleaseDto> deleteById(@PathVariable("id") Long id) {
         logger.debug("Удаляем релиз версий с указанным id");

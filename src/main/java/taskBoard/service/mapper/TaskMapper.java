@@ -9,12 +9,13 @@ public class TaskMapper {
 
     public TaskDto toDto(Task task) {
         TaskDto taskDto = new TaskDto();
+        taskDto.setId(task.getId());
         taskDto.setName(task.getName());
         taskDto.setStatus(task.getStatus());
-        taskDto.setAuthor(task.getAuthor());
-        taskDto.setDeveloper((task.getDeveloper()));
-        taskDto.setVersionRelease(task.getVersionRelease());
-        taskDto.setBoard(task.getBoard());
+//        taskDto.setAuthor(task.getAuthor());
+//        taskDto.setDeveloper((task.getDeveloper()));
+//        taskDto.setVersionRelease(task.getVersionRelease());
+//        taskDto.setBoard(task.getBoard());
         return taskDto;
     }
 
@@ -22,10 +23,10 @@ public class TaskMapper {
         Task task = new Task();
         task.setName(taskDto.getName());
         task.setStatus(taskDto.getStatus());
-        task.setAuthor(taskDto.getAuthor());
-        task.setDeveloper(taskDto.getDeveloper());
-        task.setVersionRelease(taskDto.getVersionRelease());
-        task.setBoard(taskDto.getBoard());
+//        task.setAuthor(taskDto.getAuthor());
+//        task.setDeveloper(taskDto.getDeveloper());
+//        task.setVersionRelease(taskDto.getVersionRelease());
+//        task.setBoard(taskDto.getBoard());
         return task;
     }
 }

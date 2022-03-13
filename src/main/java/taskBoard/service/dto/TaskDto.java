@@ -1,20 +1,26 @@
 package taskBoard.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import taskBoard.model.Board;
-import taskBoard.model.Employee;
-import taskBoard.model.VersionRelease;
 import taskBoard.model.enums.Status;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto {
 
+    private Integer id;
     private String name;
     private Status status;
-    private Employee author;
-    private Employee developer;
-    private VersionRelease versionRelease;
-    private Board board;
+    private EmployeeDto author;
+    private EmployeeDto developer;
+    private VersionReleaseDto versionRelease;
+    private BoardDto board;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -32,35 +38,35 @@ public class TaskDto {
         this.status = status;
     }
 
-    public Employee getAuthor() {
+    public EmployeeDto getAuthor() {
         return author;
     }
 
-    public void setAuthor(Employee author) {
+    public void setAuthor(EmployeeDto author) {
         this.author = author;
     }
 
-    public Employee getDeveloper() {
+    public EmployeeDto getDeveloper() {
         return developer;
     }
 
-    public void setDeveloper(Employee developer) {
+    public void setDeveloper(EmployeeDto developer) {
         this.developer = developer;
     }
 
-    public VersionRelease getVersionRelease() {
+    public VersionReleaseDto getVersionRelease() {
         return versionRelease;
     }
 
-    public void setVersionRelease(VersionRelease versionRelease) {
+    public void setVersionRelease(VersionReleaseDto versionRelease) {
         this.versionRelease = versionRelease;
     }
 
-    public Board getBoard() {
+    public BoardDto getBoard() {
         return board;
     }
 
-    public void setBoard(Board board) {
+    public void setBoard(BoardDto board) {
         this.board = board;
     }
 }

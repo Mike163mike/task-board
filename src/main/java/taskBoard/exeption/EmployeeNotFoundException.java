@@ -2,7 +2,7 @@ package taskBoard.exeption;
 
 public class EmployeeNotFoundException extends AppException {
 
-    public EmployeeNotFoundException(Long id) {
+    public EmployeeNotFoundException(Integer id) {
         super("Employee with id: " + id + " not found.");
     }
 

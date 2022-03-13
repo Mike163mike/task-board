@@ -33,14 +33,14 @@ public class ProjectService {
 
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         logger.debug("Удаляем объект \"Project\" c id = " + id);
         Project project = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
         repository.delete(project);
     }
 
-    public ProjectDto findById(Long id) {
+    public ProjectDto findById(Integer id) {
         logger.debug("Ищем объект \"Project\" с id = " + id);
         return projectMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id)));

@@ -38,7 +38,7 @@ public class EmployeeController {
     @GetMapping("/new/{id}")
     @ApiOperation("Получение сотрудника по id")
     @NonNull
-    public ResponseEntity<EmployeeDto> getById(@PathVariable Long id) {
+    public ResponseEntity<EmployeeDto> getById(@PathVariable Integer id) {
         logger.debug("Получение сотрудника по id");
         EmployeeDto employeeDto = employeeService.findById(id);
         if (employeeDto == null) {
@@ -60,7 +60,7 @@ public class EmployeeController {
     @ApiOperation("Обновляем данные сотрудника с указанным id")
     @NonNull
     public ResponseEntity<EmployeeDto> update(@RequestBody EmployeeDto employeeDto,
-                                              @PathVariable("id") Long id) {
+                                              @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные сотрудника с id: " + id);
         EmployeeDto newEmployeeDto = employeeService.createEmployee(employeeDto);
         return ResponseEntity.ok(newEmployeeDto);
@@ -69,7 +69,7 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем сотрудника с указанным id")
     @NonNull
-    public ResponseEntity<EmployeeDto> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<EmployeeDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем сотрудника с указанным id");
         EmployeeDto employeeDto = employeeService.findById(id);
         if (employeeDto == null) {

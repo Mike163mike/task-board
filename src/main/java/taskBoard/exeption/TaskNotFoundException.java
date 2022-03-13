@@ -2,7 +2,7 @@ package taskBoard.exeption;
 
 public class TaskNotFoundException extends AppException {
 
-    public TaskNotFoundException(Long id) {
+    public TaskNotFoundException(Integer id) {
         super("Task with id: " + id + " not found.");
     }
 

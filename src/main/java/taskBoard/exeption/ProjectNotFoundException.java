@@ -2,7 +2,7 @@ package taskBoard.exeption;
 
 public class ProjectNotFoundException extends AppException {
 
-    public ProjectNotFoundException(Long id) {
+    public ProjectNotFoundException(Integer id) {
         super("Project with id: " + id + " not found.");
     }
 

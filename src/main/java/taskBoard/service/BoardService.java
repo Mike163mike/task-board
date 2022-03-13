@@ -32,14 +32,14 @@ public class BoardService {
         return boardMapper.toDto(save);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         logger.debug("Удаляем объект \"Board\" c id = " + id);
         Board board = repository.findById(id)
                 .orElseThrow(() -> new BoardNotFoundException(id));
         repository.delete(board);
     }
 
-    public BoardDto findById(Long id) {
+    public BoardDto findById(Integer id) {
         logger.debug("Ищем объект \"Board\" с id = " + id);
         return boardMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new BoardNotFoundException(id)));

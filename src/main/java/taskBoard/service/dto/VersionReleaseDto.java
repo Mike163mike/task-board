@@ -7,8 +7,17 @@ import java.time.LocalDate;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VersionReleaseDto {
 
+    private Integer id;
     private LocalDate finishDate;
     private LocalDate startDate;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public LocalDate getFinishDate() {
         return finishDate;

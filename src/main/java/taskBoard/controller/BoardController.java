@@ -38,7 +38,7 @@ public class BoardController {
     @GetMapping("/new/{id}")
     @ApiOperation("Получение доски задач по id")
     @NonNull
-    public ResponseEntity<BoardDto> getById(@PathVariable Long id) {
+    public ResponseEntity<BoardDto> getById(@PathVariable Integer id) {
         logger.debug("Получение доски задач по id");
         BoardDto boardDto = boardService.findById(id);
         if (boardDto == null) {
@@ -60,7 +60,7 @@ public class BoardController {
     @ApiOperation("Обновляем данные доски задач с указанным id")
     @NonNull
     public ResponseEntity<BoardDto> update(@RequestBody BoardDto boardDto,
-                                           @PathVariable("id") Long id) {
+                                           @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные доски задач с id: " + id);
         BoardDto newBoardDto = boardService.createBoard(boardDto);
         return ResponseEntity.ok(newBoardDto);
@@ -69,7 +69,7 @@ public class BoardController {
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем доску задач с указанным id")
     @NonNull
-    public ResponseEntity<BoardDto> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<BoardDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем доску задач с указанным id");
         BoardDto boardDto = boardService.findById(id);
         if (boardDto == null) {

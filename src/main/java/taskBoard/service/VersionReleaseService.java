@@ -32,14 +32,14 @@ public class VersionReleaseService {
         return versionReleaseMapper.toDto(save);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         logger.debug("Удаляем объект \"VersionRelease\" c id = " + id);
         VersionRelease versionRelease = repository.findById(id)
                 .orElseThrow(() -> new VersionReleaseNotFoundException(id));
         repository.delete(versionRelease);
     }
 
-    public VersionReleaseDto findById(Long id) {
+    public VersionReleaseDto findById(Integer id) {
         logger.debug("Ищем объект \"VersionRelease\" с id = " + id);
         return versionReleaseMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new VersionReleaseNotFoundException(id)));

@@ -32,14 +32,14 @@ public class EmployeeService {
         return employeeMapper.toDto(save);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         logger.debug("Удаляем объект \"Employee\" c id = " + id);
         Employee employee = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
         repository.delete(employee);
     }
 
-    public EmployeeDto findById(Long id) {
+    public EmployeeDto findById(Integer id) {
         logger.debug("Ищем объект \"Employee\" с id = " + id);
         return employeeMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id)));

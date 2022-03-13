@@ -8,7 +8,9 @@ import taskBoard.model.Board;
 public class BoardMapper {
 
     public BoardDto toDto(Board board) {
-        return new BoardDto();
+        BoardDto boardDto = new BoardDto();
+        boardDto.setId(board.getId());
+        return boardDto;
     }
 
     public Board toEntity(BoardDto boardDto) {

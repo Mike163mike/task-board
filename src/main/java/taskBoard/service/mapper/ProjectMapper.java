@@ -8,7 +8,8 @@ import taskBoard.model.Project;
 public class ProjectMapper {
 
     public ProjectDto toDto(Project project) {
-       ProjectDto projectDto = new ProjectDto();
+        ProjectDto projectDto = new ProjectDto();
+        projectDto.setId(project.getId());
         projectDto.setName(project.getName());
         return projectDto;
     }

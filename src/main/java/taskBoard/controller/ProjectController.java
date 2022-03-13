@@ -38,7 +38,7 @@ public class ProjectController {
     @GetMapping("/new/{id}")
     @ApiOperation("Получение проекта по id")
     @NonNull
-    public ResponseEntity<ProjectDto> getById(@PathVariable Long id) {
+    public ResponseEntity<ProjectDto> getById(@PathVariable Integer id) {
         logger.debug("Получение проекта по id");
         ProjectDto projectDto = projectService.findById(id);
         if (projectDto == null) {
@@ -60,7 +60,7 @@ public class ProjectController {
     @ApiOperation("Обновляем данные проекта с указанным id")
     @NonNull
     public ResponseEntity<ProjectDto> update(@RequestBody ProjectDto projectDto,
-                                             @PathVariable("id") Long id) {
+                                             @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные роекта с id: " + id);
         ProjectDto newProjectDto = projectService.createProject(projectDto);
         return ResponseEntity.ok(newProjectDto);
@@ -69,7 +69,7 @@ public class ProjectController {
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем проект с указанным id")
     @NonNull
-    public ResponseEntity<ProjectDto> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProjectDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем проект с указанным id");
         ProjectDto projectDto = projectService.findById(id);
         if (projectDto == null) {

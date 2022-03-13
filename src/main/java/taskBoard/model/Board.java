@@ -15,7 +15,7 @@ public class Board {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = CascadeType.REFRESH)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Task> tasks = new HashSet<>();
 
     public Integer getId() {

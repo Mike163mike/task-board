@@ -32,14 +32,14 @@ public class TaskService {
         return taskMapper.toDto(save);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         logger.debug("Удаляем объект \"Task\" c id: " + id);
         Task task = repository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
         repository.delete(task);
     }
 
-    public TaskDto findById(Long id) {
+    public TaskDto findById(Integer id) {
         logger.debug("Ищем объект \"Task\" с id: " + id);
         return taskMapper.toDto(repository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id)));

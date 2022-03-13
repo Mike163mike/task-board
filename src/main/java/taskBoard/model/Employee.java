@@ -2,10 +2,8 @@ package taskBoard.model;
 
 import taskBoard.model.enums.Role;
 
-
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -23,14 +21,11 @@ public class Employee {
     private Role role;
     private boolean subscription;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Task> authorsTasks = new HashSet<>();
 
-    @OneToMany(mappedBy = "developer", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "developer", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Task> developersTasks = new HashSet<>();
-
-    @Transient
-    private Set<Employee> employees = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -92,14 +87,6 @@ public class Employee {
         this.developersTasks = developersTasks;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -108,30 +95,4 @@ public class Employee {
         this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return subscription == employee.subscription && Objects.equals(id, employee.id) && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && role == employee.role && Objects.equals(authorsTasks, employee.authorsTasks) && Objects.equals(developersTasks, employee.developersTasks) && Objects.equals(employees, employee.employees);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, surname, name, email, password, role, subscription, authorsTasks, developersTasks, employees);
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", subscription=" + subscription +
-                ", employees=" + employees +
-                '}';
-    }
 }

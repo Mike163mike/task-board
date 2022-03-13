@@ -20,7 +20,7 @@ public class VersionRelease {
     @Column(name = "finish_date")
     private LocalDate finishDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease", cascade = CascadeType.REFRESH)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "versionRelease", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Task> tasks = new ArrayList<>();
 
     public Integer getId() {
@@ -47,31 +47,30 @@ public class VersionRelease {
         return tasks;
     }
 
-    public void setTasks(List<Task> taskIdList) {
-        this.tasks = taskIdList;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         VersionRelease that = (VersionRelease) o;
         return Objects.equals(id, that.id) && Objects.equals(startDate, that.startDate) && Objects.equals(finishDate, that.finishDate) && Objects.equals(tasks, that.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, startDate, finishDate, tasks);
+        return Objects.hash(id, startDate, finishDate, tasks);
     }
 
     @Override
     public String toString() {
         return "VersionRelease{" +
                 "id=" + id +
-                ", start=" + startDate +
-                ", finish=" + finishDate +
-                ", taskList=" + tasks +
+                ", startDate=" + startDate +
+                ", finishDate=" + finishDate +
+                ", tasks=" + tasks +
                 '}';
     }
 }

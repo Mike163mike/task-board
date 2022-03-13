@@ -2,7 +2,7 @@ package taskBoard.exeption;
 
 public class VersionReleaseNotFoundException extends AppException {
 
-    public VersionReleaseNotFoundException(Long id) {
+    public VersionReleaseNotFoundException(Integer id) {
         super("VersionRelease with id: " + id + " not found.");
     }
 

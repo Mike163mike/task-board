@@ -8,9 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.service.dto.VersionReleaseDto;
 import taskBoard.exeption.VersionReleaseNotFoundException;
 import taskBoard.service.VersionReleaseService;
+import taskBoard.service.dto.VersionReleaseDto;
 
 import java.util.Set;
 
@@ -39,7 +39,7 @@ public class VersionReleaseController {
     @GetMapping("/new/{id}")
     @ApiOperation("Получение релиза версий по id")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> getById(@PathVariable Long id) {
+    public ResponseEntity<VersionReleaseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение релиза версий по id");
         VersionReleaseDto versionReleaseDto = versionReleaseService.findById(id);
         if (versionReleaseDto == null) {
@@ -61,7 +61,7 @@ public class VersionReleaseController {
     @ApiOperation("Обновляем данные релиза версий с указанным id")
     @NonNull
     public ResponseEntity<VersionReleaseDto> update(@RequestBody VersionReleaseDto versionReleaseDto,
-                                                    @PathVariable("id") Long id) {
+                                                    @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные релиза версий с id: " + id);
         VersionReleaseDto newVersionReleaseDto = versionReleaseService.createVersionRelease(versionReleaseDto);
         return ResponseEntity.ok(newVersionReleaseDto);
@@ -70,7 +70,7 @@ public class VersionReleaseController {
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем релиз версий с указанным id")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<VersionReleaseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем релиз версий с указанным id");
         VersionReleaseDto versionReleaseDto = versionReleaseService.findById(id);
         if (versionReleaseDto == null) {

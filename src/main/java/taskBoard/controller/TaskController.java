@@ -38,7 +38,7 @@ public class TaskController {
     @GetMapping("/new/{id}")
     @ApiOperation("Получение задачи по id")
     @NonNull
-    public ResponseEntity<TaskDto> getById(@PathVariable Long id) {
+    public ResponseEntity<TaskDto> getById(@PathVariable Integer id) {
         logger.debug("Получение задачи по id");
         TaskDto taskDto = taskService.findById(id);
         if (taskDto == null) {
@@ -61,7 +61,7 @@ public class TaskController {
     @ApiOperation("Обновляем данные задачи с указанным id")
     @NonNull
     public ResponseEntity<TaskDto> update(@RequestBody TaskDto taskDto,
-                                          @PathVariable("id") Long id) {
+                                          @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные задачи с id: " + id);
         TaskDto newTaskDto = taskService.createTask(taskDto);
         return ResponseEntity.ok(newTaskDto);
@@ -70,7 +70,7 @@ public class TaskController {
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем задачу с указанным id")
     @NonNull
-    public ResponseEntity<TaskDto> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<TaskDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем задачу с указанным id");
         TaskDto taskDto = taskService.findById(id);
         if (taskDto == null) {

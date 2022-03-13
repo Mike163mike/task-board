@@ -9,6 +9,7 @@ public class EmployeeMapper {
 
     public EmployeeDto toDto(Employee employee) {
         EmployeeDto employeeDto = new EmployeeDto();
+        employeeDto.setId(employee.getId());
         employeeDto.setName(employee.getName());
         employeeDto.setSurname(employee.getSurname());
         employeeDto.setEmail(employee.getEmail());

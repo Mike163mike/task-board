@@ -1,19 +1,13 @@
 package taskBoard.service.mapper;
 
-import org.springframework.stereotype.Component;
-import taskBoard.service.dto.BoardDto;
+import org.mapstruct.Mapper;
 import taskBoard.model.Board;
+import taskBoard.service.dto.BoardDto;
 
-@Component
-public class BoardMapper {
+@Mapper(componentModel = "spring")
+public interface BoardMapper {
 
-    public BoardDto toDto(Board board) {
-        BoardDto boardDto = new BoardDto();
-        boardDto.setId(board.getId());
-        return boardDto;
-    }
+    BoardDto toDto(Board board);
 
-    public Board toEntity(BoardDto boardDto) {
-        return new Board();
-    }
+    Board toEntity(BoardDto boardDto);
 }

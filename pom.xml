@@ -16,7 +16,7 @@
     </parent>
 
     <name>task-board</name>
-    <description>trainee project by SimbirSoft</description>
+    <description>training project by SimbirSoft</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -82,6 +82,11 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.8.0</version>
         </dependency>
     </dependencies>
 

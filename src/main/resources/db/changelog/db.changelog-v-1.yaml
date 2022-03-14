@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: init
+      author: Mike
+      changes:
+        - sqlFile:
+            path: db/changelog/changeset/init.sql

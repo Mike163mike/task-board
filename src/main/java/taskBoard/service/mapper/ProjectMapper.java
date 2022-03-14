@@ -1,22 +1,14 @@
 package taskBoard.service.mapper;
 
-import org.springframework.stereotype.Component;
-import taskBoard.service.dto.ProjectDto;
+import org.mapstruct.Mapper;
 import taskBoard.model.Project;
+import taskBoard.service.dto.ProjectDto;
 
-@Component
-public class ProjectMapper {
+@Mapper(componentModel = "spring")
+public interface ProjectMapper {
 
-    public ProjectDto toDto(Project project) {
-        ProjectDto projectDto = new ProjectDto();
-        projectDto.setId(project.getId());
-        projectDto.setName(project.getName());
-        return projectDto;
-    }
+    ProjectDto toDto(Project project);
 
-    public Project toEntity(ProjectDto projectDto) {
-        Project project = new Project();
-        project.setName(projectDto.getName());
-        return project;
-    }
+    Project toEntity(ProjectDto projectDto);
+
 }

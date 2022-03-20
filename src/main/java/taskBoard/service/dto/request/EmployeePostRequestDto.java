@@ -1,26 +1,17 @@
-package taskBoard.service.dto;
+package taskBoard.service.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import taskBoard.model.enums.Role;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class EmployeeDto {
+import java.util.Objects;
 
-    private Integer id;
+public class EmployeePostRequestDto {
+
     private String name;
     private String surname;
     private String email;
     private String password;
     private Role role;
     private boolean subscription;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -68,5 +59,30 @@ public class EmployeeDto {
 
     public void setSubscription(boolean subscription) {
         this.subscription = subscription;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeePostRequestDto that = (EmployeePostRequestDto) o;
+        return subscription == that.subscription && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(email, that.email) && Objects.equals(password, that.password) && role == that.role;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, email, password, role, subscription);
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeePostRequestDto{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", subscription=" + subscription +
+                '}';
     }
 }

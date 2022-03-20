@@ -3,14 +3,11 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import taskBoard.service.dto.TaskDto;
 import taskBoard.exeption.TaskNotFoundException;
 import taskBoard.model.Task;
 import taskBoard.repository.TaskRepository;
-import taskBoard.service.mapper.TaskMapper;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 public class TaskService {
@@ -18,18 +15,14 @@ public class TaskService {
     static Logger logger = LoggerFactory.getLogger(TaskService.class);
 
     private final TaskRepository repository;
-    private final TaskMapper taskMapper;
 
-    public TaskService(TaskRepository repository, TaskMapper taskMapper) {
+    public TaskService(TaskRepository repository) {
         this.repository = repository;
-        this.taskMapper = taskMapper;
     }
 
-    public TaskDto createTask(TaskDto taskDto) {
+    public Task save(Task task) {
         logger.debug("Создаём объект \"Task\"");
-        Task entity = taskMapper.toEntity(taskDto);
-        Task save = repository.save(entity);
-        return taskMapper.toDto(save);
+        return repository.save(task);
     }
 
     public void deleteById(Integer id) {
@@ -39,16 +32,14 @@ public class TaskService {
         repository.delete(task);
     }
 
-    public TaskDto findById(Integer id) {
+    public Task findById(Integer id) {
         logger.debug("Ищем объект \"Task\" с id: " + id);
-        return taskMapper.toDto(repository.findById(id)
-                .orElseThrow(() -> new TaskNotFoundException(id)));
+        return repository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException(id));
     }
 
-    public Set<TaskDto> findAll() {
+    public Set<Task> findAll() {
         logger.debug("Ищем все задачи");
-        return repository.findAll().stream()
-                .map(taskMapper::toDto)
-                .collect(Collectors.toSet());
+        return new HashSet<>(repository.findAll());
     }
 }

@@ -1,5 +1,6 @@
 package taskBoard.configuration;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -22,8 +23,8 @@ public class SwaggerConfig {
                         .contact(new Contact("Mike", "", "mick_mick_mick@icloud.com"))
                         .build())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("taskBoard.controller"))
-                .paths(PathSelectors.any())
-                .build();
+                .apis(RequestHandlerSelectors.basePackage("taskBoard.controller")) //withClassAnnotation(Tag.class))
+                        .paths(PathSelectors.any())
+                        .build();
     }
 }

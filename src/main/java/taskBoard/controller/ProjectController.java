@@ -7,75 +7,67 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.service.dto.ProjectDto;
-import taskBoard.exeption.ProjectNotFoundException;
+import taskBoard.service.dto.request.ProjectPutRequestDto;
+import taskBoard.service.dto.response.ProjectPostRequestDto;
 import taskBoard.service.ProjectService;
+import taskBoard.service.mapper.ProjectMapper;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/task-board/project")
+//@Tag(description = "Project API", name = "project")
 public class ProjectController {
 
     static Logger logger = LoggerFactory.getLogger(taskBoard.controller.EmployeeController.class);
-    private final ProjectService projectService;
+    private final ProjectService service;
+    private final ProjectMapper mapper;
 
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
+    public ProjectController(ProjectService service, ProjectMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
     @ApiOperation("Получение множества всех проектов")
-    public ResponseEntity<Set<ProjectDto>> getAll() {
+    public ResponseEntity<Set<ProjectPostRequestDto>> getAll() {
         logger.debug("Получение списка всех проектов");
-        Set<ProjectDto> projectDtos = projectService.findAll();
-        if (projectDtos.isEmpty()) {
-            throw new ProjectNotFoundException();
-        }
-        return ResponseEntity.ok(projectDtos);
+        Set<ProjectPostRequestDto> result = mapper.toSet(service.findAll());
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение проекта по id")
     @NonNull
-    public ResponseEntity<ProjectDto> getById(@PathVariable Integer id) {
+    public ResponseEntity<ProjectPostRequestDto> getById(@PathVariable Integer id) {
         logger.debug("Получение проекта по id");
-        ProjectDto projectDto = projectService.findById(id);
-        if (projectDto == null) {
-            throw new ProjectNotFoundException(id);
-        }
-        return ResponseEntity.ok(projectDto);
+        return ResponseEntity.ok(mapper.map(service.findById(id)));
     }
 
     @PostMapping
     @ApiOperation("Добавляем новый  проект")
     @NonNull
-    public ResponseEntity<ProjectDto> create(@RequestBody ProjectDto projectDto) {
+    public ResponseEntity<ProjectPostRequestDto> create(@RequestBody taskBoard.service.dto.request.ProjectPostRequestDto projectPostRequestDto) {
         logger.debug("Добавляем новый проект");
-        ProjectDto newProjectDto = projectService.createProject(projectDto);
-        return new ResponseEntity<>(newProjectDto, HttpStatus.CREATED);
+        ProjectPostRequestDto newProjectPostRequestDto = mapper.map(service.save(mapper.map(projectPostRequestDto)));
+        return new ResponseEntity<>(newProjectPostRequestDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные проекта с указанным id")
     @NonNull
-    public ResponseEntity<ProjectDto> update(@RequestBody ProjectDto projectDto,
-                                             @PathVariable("id") Integer id) {
+    public ResponseEntity<ProjectPostRequestDto> update(@RequestBody ProjectPutRequestDto projectPutRequestDto,
+                                                        @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные роекта с id: " + id);
-        ProjectDto newProjectDto = projectService.createProject(projectDto);
-        return ResponseEntity.ok(newProjectDto);
+        return ResponseEntity.ok(mapper.map(service.save(mapper.update(projectPutRequestDto))));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем проект с указанным id")
     @NonNull
-    public ResponseEntity<ProjectDto> deleteById(@PathVariable("id") Integer id) {
+    public ResponseEntity<ProjectPostRequestDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем проект с указанным id");
-        ProjectDto projectDto = projectService.findById(id);
-        if (projectDto == null) {
-            throw new ProjectNotFoundException(id);
-        }
-        projectService.deleteById(id);
+        service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

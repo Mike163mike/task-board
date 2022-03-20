@@ -16,7 +16,7 @@
     </parent>
 
     <name>task-board</name>
-    <description>training project by SimbirSoft</description>
+    <description>training projectPostRequestDto by SimbirSoft</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -25,19 +25,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.6.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <version>2.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -68,10 +72,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
+            <version>2.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>

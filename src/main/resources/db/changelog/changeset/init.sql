@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS version_release
     finish_date date
 );
 
-CREATE TABLE IF NOT EXISTS project
+CREATE TABLE IF NOT EXISTS projectPostRequestDto
 (
     id   serial PRIMARY KEY,
     name varchar(60)
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS project
 CREATE TABLE IF NOT EXISTS board
 (
     id         serial PRIMARY KEY,
-    project_id int REFERENCES project
+    project_id int REFERENCES projectPostRequestDto
 );
 
 CREATE TABLE IF NOT EXISTS task
@@ -43,4 +43,4 @@ CREATE TABLE IF NOT EXISTS task
     board_id           int REFERENCES board
 );
 
---rollback drop table employee, version_release, project, board, task;
+--rollback drop table employee, version_release, projectPostRequestDto, board, task;

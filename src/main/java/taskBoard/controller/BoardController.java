@@ -7,75 +7,68 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.exeption.BoardNotFoundException;
 import taskBoard.service.BoardService;
-import taskBoard.service.dto.BoardDto;
+import taskBoard.service.dto.response.BoardResponseDto;
+import taskBoard.service.dto.request.BoardPostRequestDto;
+import taskBoard.service.dto.request.BoardPutRequestDto;
+import taskBoard.service.mapper.BoardMapper;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/task-board/board")
+//@Tag(description = "Board API", name = "board")
 public class BoardController {
 
     static Logger logger = LoggerFactory.getLogger(BoardController.class);
-    private final BoardService boardService;
+    private final BoardService service;
+    private final BoardMapper mapper;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
+    public BoardController(BoardService service, BoardMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
     @ApiOperation("Получение множества всех досок задач")
-    public ResponseEntity<Set<BoardDto>> getAll() {
+    public ResponseEntity<Set<BoardResponseDto>> getAll() {
         logger.debug("Получение списка всех досок задач");
-        Set<BoardDto> boardDtos = boardService.findAll();
-        if (boardDtos.isEmpty()) {
-            throw new BoardNotFoundException();
-        }
-        return ResponseEntity.ok(boardDtos);
+        Set<BoardResponseDto> result = mapper.toSet(service.findAll());
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение доски задач по id")
     @NonNull
-    public ResponseEntity<BoardDto> getById(@PathVariable Integer id) {
+    public ResponseEntity<BoardResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение доски задач по id");
-        BoardDto boardDto = boardService.findById(id);
-        if (boardDto == null) {
-            throw new BoardNotFoundException(id);
-        }
-        return ResponseEntity.ok(boardDto);
+        return ResponseEntity.ok(mapper.map(service.findById(id)));
     }
 
     @PostMapping
     @ApiOperation("Добавляем новую доску задач")
     @NonNull
-    public ResponseEntity<BoardDto> create(@RequestBody BoardDto boardDto) {
+    public ResponseEntity<BoardResponseDto> create(@RequestBody BoardPostRequestDto boardPostRequestDto) {
         logger.debug("Добавляем новую доску задач");
-        BoardDto newBoardDto = boardService.createBoard(boardDto);
-        return new ResponseEntity<>(newBoardDto, HttpStatus.CREATED);
+        BoardResponseDto newBoardResponseDto = mapper.map(service.save(mapper.map(boardPostRequestDto)));
+        return new ResponseEntity<>(newBoardResponseDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные доски задач с указанным id")
     @NonNull
-    public ResponseEntity<BoardDto> update(@RequestBody BoardDto boardDto,
-                                           @PathVariable("id") Integer id) {
+    public ResponseEntity<BoardResponseDto> update(@RequestBody BoardPutRequestDto boardPutRequestDto,
+                                                   @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные доски задач с id: " + id);
-        BoardDto newBoardDto = boardService.createBoard(boardDto);
-        return ResponseEntity.ok(newBoardDto);
+        return ResponseEntity.ok(mapper.map(service.save(mapper.update(boardPutRequestDto))));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем доску задач с указанным id")
     @NonNull
-    public ResponseEntity<BoardDto> deleteById(@PathVariable("id") Integer id) {
+    public ResponseEntity<BoardResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем доску задач с указанным id");
-        BoardDto boardDto = boardService.findById(id);
-        if (boardDto == null) {
-            throw new BoardNotFoundException(id);
-        }
-        boardService.deleteById(id);
+        service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

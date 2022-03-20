@@ -3,33 +3,26 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import taskBoard.service.dto.ProjectDto;
-import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.model.Project;
+import taskBoard.exeption.EmployeeNotFoundException;
 import taskBoard.repository.ProjectRepository;
-import taskBoard.service.mapper.ProjectMapper;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 public class ProjectService {
 
-    static Logger logger = LoggerFactory.getLogger(Project.class);
+    static Logger logger = LoggerFactory.getLogger(taskBoard.model.Project.class);
 
     private final ProjectRepository repository;
-    private final ProjectMapper projectMapper;
 
-    public ProjectService(ProjectRepository repository, ProjectMapper projectMapper) {
+    public ProjectService(ProjectRepository repository) {
         this.repository = repository;
-        this.projectMapper = projectMapper;
     }
 
-    public ProjectDto createProject(ProjectDto projectDto) {
+    public Project save(Project project) {
         logger.debug("Создаём объект \"Project\"");
-        Project entity = projectMapper.toEntity(projectDto);
-        Project save = repository.save(entity);
-        return projectMapper.toDto(save);
+        return repository.save(project);
 
     }
 
@@ -40,17 +33,15 @@ public class ProjectService {
         repository.delete(project);
     }
 
-    public ProjectDto findById(Integer id) {
+    public Project findById(Integer id) {
         logger.debug("Ищем объект \"Project\" с id = " + id);
-        return projectMapper.toDto(repository.findById(id)
-                .orElseThrow(() -> new EmployeeNotFoundException(id)));
+        return repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
-    public Set<ProjectDto> findAll() {
+    public Set<Project> findAll() {
         logger.debug("Ищем все проекты");
-        return repository.findAll().stream()
-                .map(projectMapper::toDto)
-                .collect(Collectors.toSet());
+        return new HashSet<>(repository.findAll());
     }
 }
 

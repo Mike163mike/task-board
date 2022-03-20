@@ -8,75 +8,68 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.exeption.VersionReleaseNotFoundException;
 import taskBoard.service.VersionReleaseService;
-import taskBoard.service.dto.VersionReleaseDto;
+import taskBoard.service.dto.request.VersionReleasePostRequestDto;
+import taskBoard.service.dto.request.VersionReleasePutRequestDto;
+import taskBoard.service.dto.response.VersionReleaseResponseDto;
+import taskBoard.service.mapper.VersionReleaseMapper;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/task-board/version-release")
+//@Tag(description = "Version release API", name = "Version release")
 public class VersionReleaseController {
 
     static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
-    private final VersionReleaseService versionReleaseService;
+    private final VersionReleaseService service;
+    private final VersionReleaseMapper mapper;
 
-    public VersionReleaseController(VersionReleaseService versionReleaseService) {
-        this.versionReleaseService = versionReleaseService;
+    public VersionReleaseController(VersionReleaseService service, VersionReleaseMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
     @ApiOperation("Получение множества всех релизов версий")
-    public ResponseEntity<Set<VersionReleaseDto>> getAll() {
+    public ResponseEntity<Set<VersionReleaseResponseDto>> getAll() {
         logger.debug("Получение списка всех релизов версий");
-        Set<VersionReleaseDto> versionReleaseDtos = versionReleaseService.findAll();
-        if (versionReleaseDtos.isEmpty()) {
-            throw new VersionReleaseNotFoundException();
-        }
-        return ResponseEntity.ok(versionReleaseDtos);
+        Set<VersionReleaseResponseDto> result = mapper.toSet(service.findAll());
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение релиза версий по id")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> getById(@PathVariable Integer id) {
+    public ResponseEntity<VersionReleaseResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение релиза версий по id");
-        VersionReleaseDto versionReleaseDto = versionReleaseService.findById(id);
-        if (versionReleaseDto == null) {
-            throw new VersionReleaseNotFoundException(id);
-        }
-        return ResponseEntity.ok(versionReleaseDto);
+        return ResponseEntity.ok(mapper.map(service.findById(id)));
     }
 
     @PostMapping
     @ApiOperation("Добавляем новый релиз версий")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> create(@RequestBody VersionReleaseDto versionReleaseDto) {
+    public ResponseEntity<VersionReleaseResponseDto> create(@RequestBody VersionReleasePostRequestDto versionReleasePostRequestDto) {
         logger.debug("Добавляем новый релиз версий");
-        VersionReleaseDto newVersionReleaseDto = versionReleaseService.createVersionRelease(versionReleaseDto);
-        return new ResponseEntity<>(newVersionReleaseDto, HttpStatus.CREATED);
+        VersionReleaseResponseDto newVersionReleaseResponseDto = mapper.map(service.save(mapper.map(versionReleasePostRequestDto)));
+        return new ResponseEntity<>(newVersionReleaseResponseDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные релиза версий с указанным id")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> update(@RequestBody VersionReleaseDto versionReleaseDto,
-                                                    @PathVariable("id") Integer id) {
+    public ResponseEntity<VersionReleaseResponseDto> update(@RequestBody VersionReleasePutRequestDto versionReleasePutRequestDto,
+                                                            @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные релиза версий с id: " + id);
-        VersionReleaseDto newVersionReleaseDto = versionReleaseService.createVersionRelease(versionReleaseDto);
-        return ResponseEntity.ok(newVersionReleaseDto);
+        return ResponseEntity.ok(mapper.map(service.save(mapper.update(versionReleasePutRequestDto))));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем релиз версий с указанным id")
     @NonNull
-    public ResponseEntity<VersionReleaseDto> deleteById(@PathVariable("id") Integer id) {
+    public ResponseEntity<VersionReleaseResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем релиз версий с указанным id");
-        VersionReleaseDto versionReleaseDto = versionReleaseService.findById(id);
-        if (versionReleaseDto == null) {
-            throw new VersionReleaseNotFoundException(id);
-        }
-        versionReleaseService.deleteById(id);
+        service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

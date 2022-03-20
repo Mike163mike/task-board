@@ -1,14 +1,26 @@
 package taskBoard.service.mapper;
 
 import org.mapstruct.Mapper;
-import taskBoard.model.Project;
-import taskBoard.service.dto.ProjectDto;
+import taskBoard.service.dto.request.ProjectPutRequestDto;
+import taskBoard.service.dto.response.ProjectPostRequestDto;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
 
-    ProjectDto toDto(Project project);
+    ProjectPostRequestDto map(taskBoard.model.Project project);
 
-    Project toEntity(ProjectDto projectDto);
+    taskBoard.model.Project map(taskBoard.service.dto.request.ProjectPostRequestDto projectPostRequestDto);
 
+    taskBoard.model.Project update(ProjectPutRequestDto projectPutRequestDto);
+
+    default Set<ProjectPostRequestDto> toSet(Set<taskBoard.model.Project> models) {
+        return models.stream()
+                .map(this::map)
+                .collect(Collectors.toSet());
+    }
 }
+
+

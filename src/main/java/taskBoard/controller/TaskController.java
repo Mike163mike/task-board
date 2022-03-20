@@ -7,76 +7,69 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import taskBoard.service.dto.TaskDto;
-import taskBoard.exeption.TaskNotFoundException;
+import taskBoard.service.dto.request.TaskPostRequestDto;
+import taskBoard.service.dto.request.TaskPutRequestDto;
+import taskBoard.service.dto.response.TaskResponseDto;
 import taskBoard.service.TaskService;
+import taskBoard.service.mapper.TaskMapper;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/task-board/task")
+//@Tag(description = "Task API", name = "task")
 public class TaskController {
 
     static Logger logger = LoggerFactory.getLogger(TaskController.class);
-    private final TaskService taskService;
+    private final TaskService service;
+    private final TaskMapper mapper;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
+    public TaskController(TaskService service, TaskMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
     @ApiOperation("Получение множества всех задач")
-    public ResponseEntity<Set<TaskDto>> getAll() {
+    public ResponseEntity<Set<TaskResponseDto>> getAll() {
         logger.debug("Получение списка всех задач");
-        Set<TaskDto> taskDtos = taskService.findAll();
-        if (taskDtos.isEmpty()) {
-            throw new TaskNotFoundException();
-        }
-        return ResponseEntity.ok(taskDtos);
+        Set<TaskResponseDto> result = mapper.toSet(service.findAll());
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/new/{id}")
     @ApiOperation("Получение задачи по id")
     @NonNull
-    public ResponseEntity<TaskDto> getById(@PathVariable Integer id) {
+    public ResponseEntity<TaskResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение задачи по id");
-        TaskDto taskDto = taskService.findById(id);
-        if (taskDto == null) {
-            throw new TaskNotFoundException(id);
-        }
-        return ResponseEntity.ok(taskDto);
+        return ResponseEntity.ok(mapper.map(service.findById(id)));
     }
 
 
     @PostMapping
     @ApiOperation("Добавляем новую задачу")
     @NonNull
-    public ResponseEntity<TaskDto> create(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskResponseDto> create(@RequestBody TaskPostRequestDto taskPostRequestDto) {
         logger.debug("Добавляем новую задачу");
-        TaskDto newTaskDto = taskService.createTask(taskDto);
-        return new ResponseEntity<>(newTaskDto, HttpStatus.CREATED);
+        TaskResponseDto newTaskResponseDto = mapper.map(service.save(mapper.map(taskPostRequestDto)));
+        return new ResponseEntity<>(newTaskResponseDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Обновляем данные задачи с указанным id")
     @NonNull
-    public ResponseEntity<TaskDto> update(@RequestBody TaskDto taskDto,
-                                          @PathVariable("id") Integer id) {
+    public ResponseEntity<TaskResponseDto> update(@RequestBody TaskPutRequestDto taskPutRequestDto,
+                                                  @PathVariable("id") Integer id) {
         logger.debug("Обновляем данные задачи с id: " + id);
-        TaskDto newTaskDto = taskService.createTask(taskDto);
-        return ResponseEntity.ok(newTaskDto);
+        return ResponseEntity.ok(mapper.map(service.save(mapper.update(taskPutRequestDto))));
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаляем задачу с указанным id")
     @NonNull
-    public ResponseEntity<TaskDto> deleteById(@PathVariable("id") Integer id) {
+    public ResponseEntity<TaskResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем задачу с указанным id");
-        TaskDto taskDto = taskService.findById(id);
-        if (taskDto == null) {
-            throw new TaskNotFoundException(id);
-        }
-        taskService.deleteById(id);
+        service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

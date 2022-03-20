@@ -3,14 +3,12 @@ package taskBoard.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import taskBoard.service.dto.VersionReleaseDto;
+import taskBoard.service.dto.response.VersionReleaseResponseDto;
 import taskBoard.exeption.VersionReleaseNotFoundException;
 import taskBoard.model.VersionRelease;
 import taskBoard.repository.VersionReleaseRepository;
-import taskBoard.service.mapper.VersionReleaseMapper;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 public class VersionReleaseService {
@@ -18,18 +16,14 @@ public class VersionReleaseService {
     static Logger logger = LoggerFactory.getLogger(VersionReleaseService.class);
 
     private final VersionReleaseRepository repository;
-    private final VersionReleaseMapper versionReleaseMapper;
 
-    public VersionReleaseService(VersionReleaseRepository repository, VersionReleaseMapper versionReleaseMapper) {
+    public VersionReleaseService(VersionReleaseRepository repository) {
         this.repository = repository;
-        this.versionReleaseMapper = versionReleaseMapper;
     }
 
-    public VersionReleaseDto createVersionRelease(VersionReleaseDto versionReleaseDto) {
+    public VersionRelease save(VersionRelease versionRelease) {
         logger.debug("Создаём объект \"VersionRelease\"");
-        VersionRelease entity = versionReleaseMapper.toEntity(versionReleaseDto);
-        VersionRelease save = repository.save(entity);
-        return versionReleaseMapper.toDto(save);
+        return repository.save(versionRelease);
     }
 
     public void deleteById(Integer id) {
@@ -39,16 +33,14 @@ public class VersionReleaseService {
         repository.delete(versionRelease);
     }
 
-    public VersionReleaseDto findById(Integer id) {
+    public VersionRelease findById(Integer id) {
         logger.debug("Ищем объект \"VersionRelease\" с id = " + id);
-        return versionReleaseMapper.toDto(repository.findById(id)
-                .orElseThrow(() -> new VersionReleaseNotFoundException(id)));
+        return repository.findById(id)
+                .orElseThrow(() -> new VersionReleaseNotFoundException(id));
     }
 
-    public Set<VersionReleaseDto> findAll() {
+    public Set<VersionRelease> findAll() {
         logger.debug("Ищем все релизы версий");
-        return repository.findAll().stream()
-                .map(versionReleaseMapper::toDto)
-                .collect(Collectors.toSet());
+        return new HashSet<>(repository.findAll());
     }
 }

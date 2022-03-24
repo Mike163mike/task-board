@@ -3,7 +3,7 @@ package taskBoard.security;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import taskBoard.service.dto.EmployeeDto;
+import taskBoard.model.Employee;
 
 import java.util.*;
 
@@ -54,14 +54,14 @@ public class SecurityUser implements UserDetails {
         return true;
     }
 
-    public static UserDetails fromEmployee(EmployeeDto employeeDto) {
-        return new User(employeeDto.getEmail(),
-                employeeDto.getPassword(),
+    public static UserDetails fromEmployee(Employee employee) {
+        return new User(employee.getEmail(),
+                employee.getPassword(),
                 true,
                 true,
                 true,
                 true,
-                employeeDto.getRole().getAuthority());
+                employee.getRole().getAuthority());
     }
 
     @Override

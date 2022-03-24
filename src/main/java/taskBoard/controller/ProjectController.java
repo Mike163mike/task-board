@@ -1,6 +1,6 @@
 package taskBoard.controller;
 
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class ProjectController {
     }
 
     @GetMapping
-    @ApiOperation("Получение множества всех проектов")
+    //@ApiOperation("Получение множества всех проектов")
     public ResponseEntity<Set<ProjectPostRequestDto>> getAll() {
         logger.debug("Получение списка всех проектов");
         Set<ProjectPostRequestDto> result = mapper.toSet(service.findAll());
@@ -37,7 +37,7 @@ public class ProjectController {
     }
 
     @GetMapping("/new/{id}")
-    @ApiOperation("Получение проекта по id")
+  //  @ApiOperation("Получение проекта по id")
     @NonNull
     public ResponseEntity<ProjectPostRequestDto> getById(@PathVariable Integer id) {
         logger.debug("Получение проекта по id");
@@ -45,7 +45,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    @ApiOperation("Добавляем новый  проект")
+   // @ApiOperation("Добавляем новый  проект")
     @NonNull
     public ResponseEntity<ProjectPostRequestDto> create(@RequestBody taskBoard.service.dto.request.ProjectPostRequestDto projectPostRequestDto) {
         logger.debug("Добавляем новый проект");
@@ -54,7 +54,7 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("Обновляем данные проекта с указанным id")
+   // @ApiOperation("Обновляем данные проекта с указанным id")
     @NonNull
     public ResponseEntity<ProjectPostRequestDto> update(@RequestBody ProjectPutRequestDto projectPutRequestDto,
                                                         @PathVariable("id") Integer id) {
@@ -63,7 +63,7 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляем проект с указанным id")
+   // @ApiOperation("Удаляем проект с указанным id")
     @NonNull
     public ResponseEntity<ProjectPostRequestDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем проект с указанным id");

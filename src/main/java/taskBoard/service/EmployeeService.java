@@ -43,4 +43,14 @@ public class EmployeeService {
         logger.debug("Ищем всех сотрудников");
         return new HashSet<>(repository.findAll());
     }
+
+    public Employee findByEmail(String email) {
+        Set<Employee> employees = findAll();
+        for (Employee employee:employees) {
+            if (employee.getEmail().equals(email)) {
+                return employee;
+            }
+        }
+        return null;
+    }
 }

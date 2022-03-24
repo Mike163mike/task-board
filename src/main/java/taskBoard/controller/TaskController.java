@@ -1,6 +1,6 @@
 package taskBoard.controller;
 
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @GetMapping
-    @ApiOperation("Получение множества всех задач")
+    //@ApiOperation("Получение множества всех задач")
     public ResponseEntity<Set<TaskResponseDto>> getAll() {
         logger.debug("Получение списка всех задач");
         Set<TaskResponseDto> result = mapper.toSet(service.findAll());
@@ -38,7 +38,7 @@ public class TaskController {
     }
 
     @GetMapping("/new/{id}")
-    @ApiOperation("Получение задачи по id")
+    //@ApiOperation("Получение задачи по id")
     @NonNull
     public ResponseEntity<TaskResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение задачи по id");
@@ -47,7 +47,7 @@ public class TaskController {
 
 
     @PostMapping
-    @ApiOperation("Добавляем новую задачу")
+    //@ApiOperation("Добавляем новую задачу")
     @NonNull
     public ResponseEntity<TaskResponseDto> create(@RequestBody TaskPostRequestDto taskPostRequestDto) {
         logger.debug("Добавляем новую задачу");
@@ -56,7 +56,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("Обновляем данные задачи с указанным id")
+   // @ApiOperation("Обновляем данные задачи с указанным id")
     @NonNull
     public ResponseEntity<TaskResponseDto> update(@RequestBody TaskPutRequestDto taskPutRequestDto,
                                                   @PathVariable("id") Integer id) {
@@ -65,7 +65,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляем задачу с указанным id")
+   // @ApiOperation("Удаляем задачу с указанным id")
     @NonNull
     public ResponseEntity<TaskResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем задачу с указанным id");

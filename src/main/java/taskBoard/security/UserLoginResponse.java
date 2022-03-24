@@ -1,9 +1,11 @@
 package taskBoard.security;
 
+import org.springframework.stereotype.Component;
 import taskBoard.model.enums.Role;
 
 import java.util.Objects;
 
+@Component
 public class UserLoginResponse {
 
     private Integer id;

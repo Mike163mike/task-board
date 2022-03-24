@@ -1,6 +1,6 @@
 package taskBoard.controller;
 
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    @ApiOperation("Получение множества всех сотрудников")
+    //@ApiOperation("Получение множества всех сотрудников")
     public ResponseEntity<Set<EmployeeResponseDto>> getAll() {
         logger.debug("Получение списка всех сотрудников");
         Set<EmployeeResponseDto> result = mapper.toSet(service.findAll());
@@ -38,7 +38,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/new/{id}")
-    @ApiOperation("Получение сотрудника по id")
+   // @ApiOperation("Получение сотрудника по id")
     @NonNull
     public ResponseEntity<EmployeeResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение сотрудника по id");
@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    @ApiOperation("Добавляем нового сотрудника")
+   // @ApiOperation("Добавляем нового сотрудника")
     @NonNull
     public ResponseEntity<EmployeeResponseDto> create(@RequestBody EmployeePostRequestDto employeePostRequestDto) {
         logger.debug("Добавляем нового сотрудника");
@@ -55,7 +55,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("Обновляем данные сотрудника с указанным id")
+   // @ApiOperation("Обновляем данные сотрудника с указанным id")
     @NonNull
     public ResponseEntity<EmployeeResponseDto> update(@RequestBody EmployeePutRequestDto employeePutRequestDto,
                                                       @PathVariable("id") Integer id) {
@@ -64,7 +64,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляем сотрудника с указанным id")
+   // @ApiOperation("Удаляем сотрудника с указанным id")
     @NonNull
     public ResponseEntity<EmployeeResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем сотрудника с указанным id");

@@ -1,7 +1,7 @@
 package taskBoard.controller;
 
 
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class VersionReleaseController {
     }
 
     @GetMapping
-    @ApiOperation("Получение множества всех релизов версий")
+   // @ApiOperation("Получение множества всех релизов версий")
     public ResponseEntity<Set<VersionReleaseResponseDto>> getAll() {
         logger.debug("Получение списка всех релизов версий");
         Set<VersionReleaseResponseDto> result = mapper.toSet(service.findAll());
@@ -39,7 +39,7 @@ public class VersionReleaseController {
     }
 
     @GetMapping("/new/{id}")
-    @ApiOperation("Получение релиза версий по id")
+   // @ApiOperation("Получение релиза версий по id")
     @NonNull
     public ResponseEntity<VersionReleaseResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение релиза версий по id");
@@ -47,7 +47,7 @@ public class VersionReleaseController {
     }
 
     @PostMapping
-    @ApiOperation("Добавляем новый релиз версий")
+  //  @ApiOperation("Добавляем новый релиз версий")
     @NonNull
     public ResponseEntity<VersionReleaseResponseDto> create(@RequestBody VersionReleasePostRequestDto versionReleasePostRequestDto) {
         logger.debug("Добавляем новый релиз версий");
@@ -56,7 +56,7 @@ public class VersionReleaseController {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("Обновляем данные релиза версий с указанным id")
+  //  @ApiOperation("Обновляем данные релиза версий с указанным id")
     @NonNull
     public ResponseEntity<VersionReleaseResponseDto> update(@RequestBody VersionReleasePutRequestDto versionReleasePutRequestDto,
                                                             @PathVariable("id") Integer id) {
@@ -65,7 +65,7 @@ public class VersionReleaseController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Удаляем релиз версий с указанным id")
+ //   @ApiOperation("Удаляем релиз версий с указанным id")
     @NonNull
     public ResponseEntity<VersionReleaseResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем релиз версий с указанным id");

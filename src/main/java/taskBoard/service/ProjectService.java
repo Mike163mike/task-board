@@ -12,7 +12,7 @@ import java.util.*;
 @Service
 public class ProjectService {
 
-    static Logger logger = LoggerFactory.getLogger(taskBoard.model.Project.class);
+    static Logger logger = LoggerFactory.getLogger(ProjectService.class);
 
     private final ProjectRepository repository;
 

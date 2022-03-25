@@ -1,11 +1,12 @@
 package taskBoard.controller;
 
-//import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import taskBoard.service.BoardService;
 import taskBoard.service.dto.response.BoardResponseDto;
@@ -30,7 +31,7 @@ public class BoardController {
     }
 
     @GetMapping
-   // @ApiOperation("Получение множества всех досок задач")
+    @ApiOperation("Получение множества всех досок задач")
     public ResponseEntity<Set<BoardResponseDto>> getAll() {
         logger.debug("Получение списка всех досок задач");
         Set<BoardResponseDto> result = mapper.toSet(service.findAll());
@@ -38,7 +39,7 @@ public class BoardController {
     }
 
     @GetMapping("/new/{id}")
-   // @ApiOperation("Получение доски задач по id")
+    @ApiOperation("Получение доски задач по id")
     @NonNull
     public ResponseEntity<BoardResponseDto> getById(@PathVariable Integer id) {
         logger.debug("Получение доски задач по id");
@@ -46,7 +47,8 @@ public class BoardController {
     }
 
     @PostMapping
-   // @ApiOperation("Добавляем новую доску задач")
+    @PreAuthorize("hasAuthority('user:create')")
+    @ApiOperation("Добавляем новую доску задач")
     @NonNull
     public ResponseEntity<BoardResponseDto> create(@RequestBody BoardPostRequestDto boardPostRequestDto) {
         logger.debug("Добавляем новую доску задач");
@@ -55,7 +57,8 @@ public class BoardController {
     }
 
     @PutMapping("/{id}")
-   // @ApiOperation("Обновляем данные доски задач с указанным id")
+    @PreAuthorize("hasAuthority('user:update')")
+    @ApiOperation("Обновляем данные доски задач с указанным id")
     @NonNull
     public ResponseEntity<BoardResponseDto> update(@RequestBody BoardPutRequestDto boardPutRequestDto,
                                                    @PathVariable("id") Integer id) {
@@ -64,7 +67,8 @@ public class BoardController {
     }
 
     @DeleteMapping("/{id}")
-   // @ApiOperation("Удаляем доску задач с указанным id")
+    @PreAuthorize("hasAuthority('user:delete')")
+    @ApiOperation("Удаляем доску задач с указанным id")
     @NonNull
     public ResponseEntity<BoardResponseDto> deleteById(@PathVariable("id") Integer id) {
         logger.debug("Удаляем доску задач с указанным id");

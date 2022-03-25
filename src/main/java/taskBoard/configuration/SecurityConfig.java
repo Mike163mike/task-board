@@ -31,13 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf()
                 //.disable()
                 .authorizeRequests()
+                .antMatchers("/")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
                 .permitAll()
                 .and()
-                .httpBasic();
+                .logout()
+                .permitAll();
+//                .and()
+//                .httpBasic();
     }
 
     @Bean

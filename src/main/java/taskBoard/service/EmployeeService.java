@@ -13,7 +13,7 @@ import java.util.*;
 @Service
 public class EmployeeService {
 
-    static Logger logger = LoggerFactory.getLogger(Employee.class);
+    static Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 
     private final EmployeeRepository repository;
 
